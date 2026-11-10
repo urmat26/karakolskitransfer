@@ -2,3 +2,4 @@
 fix_*.py
 transcribe.py
 check.js
+.env

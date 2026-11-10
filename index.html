@@ -261,6 +261,13 @@
         }
         .hero-cta { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 56px; }
         .hero-cta .btn { padding: 16px 30px; font-size: 1.02rem; }
+        @keyframes pulse-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.45; transform: scale(0.8); } }
+        @keyframes fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+        .hero-inner > * { animation: fade-up 0.75s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .hero-inner > :nth-child(2) { animation-delay: 0.08s; }
+        .hero-inner > :nth-child(3) { animation-delay: 0.16s; }
+        .hero-inner > :nth-child(4) { animation-delay: 0.24s; }
+        .hero-inner > :nth-child(5) { animation-delay: 0.32s; }
         
         .hero-stats {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
@@ -343,6 +350,7 @@
             white-space: nowrap;
         }
         .rate .r-unit { display: block; font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
+        table.rates small { color: var(--muted); }
         
         .loc-feats { list-style: none; padding: 0; margin: 0 0 26px; display: grid; gap: 11px; }
         .loc-feats li { display: flex; align-items: center; gap: 12px; font-size: 0.92rem; color: var(--ink-2); font-weight: 500; }
@@ -461,11 +469,12 @@
             border: 1px solid rgba(56, 189, 248, 0.35);
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
         }
-        .why-card-us::before {
-            content: "РЕКОМЕНДУЕМ"; position: absolute; top: 16px; right: 16px;
+        .why-tag {
+            position: absolute; top: 16px; right: 16px;
             background: var(--emerald); color: #fff; font-size: 0.68rem; font-weight: 800;
-            padding: 4px 10px; border-radius: 999px; letter-spacing: 0.08em;
+            padding: 4px 10px; border-radius: 999px; letter-spacing: 0.08em; text-transform: uppercase;
         }
+        .eyebrow-dark { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
         .why-card-head {
             display: flex; align-items: center; gap: 14px; margin-bottom: 26px;
         }
@@ -570,6 +579,10 @@
             display: flex; align-items: center; justify-content: space-between;
             font-weight: 700; font-size: 0.85rem; color: #065f46; margin-bottom: 10px;
         }
+        .copy-btn {
+            background: transparent; border: 0; color: #047857; font-weight: 700;
+            cursor: pointer; font-size: 0.75rem; font-family: var(--font-body);
+        }
         .wp-box-text {
             font-family: monospace; font-size: 0.82rem; color: #047857;
             white-space: pre-line; line-height: 1.45; word-break: break-word;
@@ -626,6 +639,10 @@
             border-color: rgba(31, 111, 214, 0.3);
         }
         .contact-icon { width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center; font-size: 1.2rem; flex: 0 0 auto; }
+        .ci-blue { background: rgba(31, 111, 214, 0.12); color: #1f6fd6; }
+        .ci-green { background: rgba(16, 185, 129, 0.14); color: #10b981; }
+        .ci-sky { background: rgba(14, 165, 233, 0.14); color: #0ea5e9; }
+        .ci-pink { background: rgba(236, 72, 153, 0.14); color: #ec4899; }
         .contact-item .c-label { font-size: 0.78rem; color: var(--muted); }
         .contact-item .c-val { font-weight: 700; font-size: 1rem; word-break: break-word; color: var(--ink); }
         
@@ -937,7 +954,7 @@
                     </div>
                     <div class="roofbox-badge-lg">
                         <b>850 L</b>
-                        <span>Roof Capacity</span>
+                        <span data-lang="roofbox_badge">Вместимость</span>
                     </div>
                 </div>
             </div>
@@ -947,7 +964,7 @@
         <section id="why" class="why-section">
             <div class="container">
                 <div class="section-head">
-                    <span class="eyebrow" style="background:rgba(56,189,248,0.15); color:var(--accent);"><i class="fa-solid fa-shield-halved"></i> <span data-lang="why_title">Почему выбирают наш трансфер</span></span>
+                    <span class="eyebrow eyebrow-dark"><i class="fa-solid fa-shield-halved"></i> <span data-lang="nav_why">Почему мы</span></span>
                     <h2 data-lang="why_title">Почему выбирают наш трансфер</h2>
                     <p data-lang="why_subtitle">Безопасность на горном серпантине, комфорт внедорожника и честные фиксированные цены</p>
                 </div>
@@ -969,6 +986,7 @@
                         <div class="why-card-head">
                             <div class="why-card-icon"><i class="fa-solid fa-snowflake"></i></div>
                             <h3 data-lang="why_us_title">Karakol Ski Transfer (LC 100 4WD)</h3>
+                            <span class="why-tag" data-lang="why_recommended">Рекомендуем</span>
                         </div>
                         <ul class="why-list">
                             <li><i class="fa-solid fa-check"></i> <span data-lang="why_us_1">Настоящие экспедиционные внедорожники 4WD с блокировками для любых метелей</span></li>
@@ -1009,7 +1027,7 @@
                                 <td data-lang="dest2">Ala-Too Resort</td>
                                 <td><span class="kgs">10 000 KGS</span></td>
                                 <td><span class="kgs">15 000 KGS</span></td>
-                                <td><span class="kgs">3 000 KGS</span><br><small style="color:var(--muted)" data-lang="price_min3">минимум 3 пассажира</small></td>
+                                <td><span class="kgs">3 000 KGS</span><br><small data-lang="price_min3">минимум 3 пассажира</small></td>
                             </tr>
                         </tbody>
                     </table>
@@ -1057,7 +1075,7 @@
             <div class="container">
                 <div class="booking-card">
                     <div class="booking-side">
-                        <span class="eyebrow"><i class="fa-brands fa-whatsapp"></i> WhatsApp Booking</span>
+                        <span class="eyebrow"><i class="fa-brands fa-whatsapp"></i> <span data-lang="book_eyebrow">WhatsApp-заявка</span></span>
                         <h2 data-lang="book_title">Заказать трансфер</h2>
                         <p data-lang="book_subtitle">Заполните параметры поездки — откроется чат WhatsApp с уже сформированным сообщением.</p>
                         <ul class="mini-list">
@@ -1068,7 +1086,7 @@
                         <div class="whatsapp-preview-box">
                             <div class="wp-box-head">
                                 <span><i class="fa-brands fa-whatsapp"></i> <span data-lang="calc_msg_preview">Предпросмотр сообщения</span></span>
-                                <button type="button" id="copyMsgBtn" style="background:transparent; border:0; color:#047857; font-weight:700; cursor:pointer; font-size:0.75rem;"><i class="fa-regular fa-copy"></i> <span data-lang="calc_copy_btn">Скопировать</span></button>
+                                <button type="button" id="copyMsgBtn" class="copy-btn"><i class="fa-regular fa-copy"></i> <span data-lang="calc_copy_btn">Скопировать</span></button>
                             </div>
                             <div class="wp-box-text" id="wpPreviewText">Karakol Ski Transfer...</div>
                         </div>
@@ -1128,19 +1146,19 @@
                 <div class="contacts-grid">
                     <div class="contact-list">
                         <a href="tel:+996558130031" class="contact-item">
-                            <div class="contact-icon" style="background:rgba(31,111,214,0.12); color:#1f6fd6;"><i class="fa-solid fa-phone"></i></div>
+                            <div class="contact-icon ci-blue"><i class="fa-solid fa-phone"></i></div>
                             <div><div class="c-label" data-lang="contact_phone_label">Телефон</div><div class="c-val">+996 558 130 031</div></div>
                         </a>
                         <a href="https://wa.me/996558130031" target="_blank" rel="noopener" class="contact-item">
-                            <div class="contact-icon" style="background:rgba(16,185,129,0.14); color:#10b981;"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div class="contact-icon ci-green"><i class="fa-brands fa-whatsapp"></i></div>
                             <div><div class="c-label" data-lang="contact_whatsapp_label">WhatsApp</div><div class="c-val">+996 558 130 031</div></div>
                         </a>
                         <a href="https://t.me/+996558130031" target="_blank" rel="noopener" class="contact-item">
-                            <div class="contact-icon" style="background:rgba(14,165,233,0.14); color:#0ea5e9;"><i class="fa-brands fa-telegram"></i></div>
+                            <div class="contact-icon ci-sky"><i class="fa-brands fa-telegram"></i></div>
                             <div><div class="c-label" data-lang="contact_telegram_label">Telegram</div><div class="c-val">+996 558 130 031</div></div>
                         </a>
                         <a href="https://www.instagram.com/kyrgyz4x4rentals?stkn=eTNldm1xZHB6MXA%3D&utm_source=qr" target="_blank" rel="noopener" class="contact-item">
-                            <div class="contact-icon" style="background:rgba(236,72,153,0.14); color:#ec4899;"><i class="fa-brands fa-instagram"></i></div>
+                            <div class="contact-icon ci-pink"><i class="fa-brands fa-instagram"></i></div>
                             <div><div class="c-label" data-lang="contact_instagram_label">Instagram</div><div class="c-val">@kyrgyz4x4rentals</div></div>
                         </a>
                     </div>
@@ -1314,7 +1332,11 @@
         "calc_step1": "1. Курорт",
         "calc_step2": "2. Формат поездки",
         "calc_step3": "3. Дата и подача",
-        "calc_copy_btn": "Скопировать текст заявки"
+        "calc_copy_btn": "Скопировать текст заявки",
+        "nav_why": "Почему мы",
+        "why_recommended": "Рекомендуем",
+        "book_eyebrow": "WhatsApp-заявка",
+        "roofbox_badge": "Вместимость"
     },
     "en": {
         "page_title": "Karakol Ski Transfer — ski resort transfers in Karakol",
@@ -1453,7 +1475,11 @@
         "calc_step1": "1. Destination",
         "calc_step2": "2. Transfer Type",
         "calc_step3": "3. Date & Pickup",
-        "calc_copy_btn": "Copy Message Text"
+        "calc_copy_btn": "Copy Message Text",
+        "nav_why": "Why us",
+        "why_recommended": "Recommended",
+        "book_eyebrow": "WhatsApp booking",
+        "roofbox_badge": "Roof capacity"
     }
 };
         /*__I18N_END__*/

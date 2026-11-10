@@ -135,5 +135,9 @@
     "calc_step1": "1. Destination",
     "calc_step2": "2. Transfer Type",
     "calc_step3": "3. Date & Pickup",
-    "calc_copy_btn": "Copy Message Text"
+    "calc_copy_btn": "Copy Message Text",
+    "nav_why": "Why us",
+    "why_recommended": "Recommended",
+    "book_eyebrow": "WhatsApp booking",
+    "roofbox_badge": "Roof capacity"
 }

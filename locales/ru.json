@@ -135,5 +135,9 @@
     "calc_step1": "1. Курорт",
     "calc_step2": "2. Формат поездки",
     "calc_step3": "3. Дата и подача",
-    "calc_copy_btn": "Скопировать текст заявки"
+    "calc_copy_btn": "Скопировать текст заявки",
+    "nav_why": "Почему мы",
+    "why_recommended": "Рекомендуем",
+    "book_eyebrow": "WhatsApp-заявка",
+    "roofbox_badge": "Вместимость"
 }
