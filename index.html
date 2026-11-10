@@ -129,43 +129,7 @@
             background: #f8fbff;
         }
 
-        /* Top Bar Ticker */
-        .top-ticker {
-            background: #040912;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            position: relative;
-            z-index: 55;
-        }
-        .top-ticker .container {
-            display: flex; align-items: center; justify-content: space-between; gap: 12px;
-        }
-        .ticker-telemetry {
-            display: inline-flex; align-items: center; gap: 8px; color: var(--accent);
-        }
-        .ticker-live-dot {
-            width: 7px; height: 7px; border-radius: 50%;
-            background: var(--emerald);
-            box-shadow: 0 0 10px var(--emerald);
-            animation: pulse-dot 2s infinite ease-in-out;
-        }
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.8); }
-        }
-        .ticker-contacts {
-            display: inline-flex; align-items: center; gap: 16px;
-        }
-        .ticker-contacts a {
-            color: rgba(255, 255, 255, 0.8);
-            transition: color 0.2s;
-            display: inline-flex; align-items: center; gap: 5px;
-        }
-        .ticker-contacts a:hover { color: #fff; }
+        
 
         /* Header & Nav */
         header.site-header {
@@ -739,7 +703,7 @@
         @media (max-width: 768px) {
             .mobile-bottom-bar { display: block; }
             body { padding-bottom: 70px; }
-            .top-ticker { display: none; }
+            
         }
         @media (max-width: 640px) {
             section { padding: 68px 0; }
@@ -765,19 +729,6 @@
     </style>
 </head>
 <body>
-    <div class="top-ticker">
-        <div class="container">
-            <div class="ticker-telemetry">
-                <span class="ticker-live-dot"></span>
-                <span data-lang="hero_telemetry">Каракол: -4°C · Снег 155 см · Дорога открыта 4WD</span>
-            </div>
-            <div class="ticker-contacts">
-                <a href="https://wa.me/996558130031" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                <a href="https://t.me/+996558130031" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> Telegram</a>
-                <a href="tel:+996558130031"><i class="fa-solid fa-phone"></i> +996 558 130 031</a>
-            </div>
-        </div>
-    </div>
 
     <header class="site-header" id="siteHeader">
         <div class="container nav">
@@ -788,7 +739,6 @@
             <nav class="nav-links" id="navLinks" aria-label="Main navigation">
                 <a href="#locations" data-lang="nav_locations">Направления</a>
                 <a href="#cars" data-lang="nav_cars">Автомобили</a>
-                <a href="#why" data-lang="why_title">Почему выбирают наш трансфер</a>
                 <a href="#prices" data-lang="nav_prices">Цены</a>
                 <a href="#how" data-lang="nav_how">Как это работает</a>
                 <a href="#contacts" data-lang="nav_contacts">Контакты</a>
@@ -1753,7 +1703,7 @@
                 }
 
                 // Scrollspy
-                const sections = ['locations', 'cars', 'why', 'prices', 'how', 'contacts'].map(function (id) {
+                const sections = ['locations', 'cars', 'prices', 'how', 'contacts'].map(function (id) {
                     return document.getElementById(id);
                 }).filter(Boolean);
                 const navItems = document.querySelectorAll('.nav-links a:not(.nav-mobile-cta)');
