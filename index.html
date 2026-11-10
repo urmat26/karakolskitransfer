@@ -29,102 +29,176 @@
 
     <style>
         :root {
-            --ink: #0a2342;
-            --ink-2: #123a63;
-            --muted: #58708a;
-            --bg: #eef6fd;
+            --ink: #07172c;
+            --ink-2: #0f2c4f;
+            --muted: #53708e;
+            --bg: #060f1d;
+            --bg-light: #f4f9fd;
             --surface: #ffffff;
-            --surface-2: #e4f1fb;
+            --surface-glass: rgba(255, 255, 255, 0.88);
+            --surface-dark: #0b1a2f;
+            --surface-dark-glass: rgba(11, 26, 47, 0.75);
+            --line: rgba(10, 35, 66, 0.1);
+            --line-glass: rgba(255, 255, 255, 0.15);
             --ice: #bfe4ff;
+            --ice-soft: rgba(191, 228, 255, 0.15);
             --blue: #1f6fd6;
             --blue-d: #0b4aa2;
             --accent: #38bdf8;
-            --line: rgba(10, 35, 66, 0.12);
-            --shadow: 0 18px 50px rgba(10, 35, 66, 0.12);
-            --shadow-sm: 0 8px 24px rgba(10, 35, 66, 0.08);
-            --radius: 22px;
-            --max: 1180px;
+            --accent-glow: rgba(56, 189, 248, 0.35);
+            --emerald: #10b981;
+            --shadow: 0 20px 50px rgba(7, 23, 44, 0.12);
+            --shadow-lg: 0 25px 60px rgba(5, 15, 29, 0.25);
+            --shadow-sm: 0 8px 24px rgba(7, 23, 44, 0.08);
+            --radius-sm: 12px;
+            --radius: 20px;
+            --radius-lg: 28px;
+            --max: 1200px;
             --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             --font-head: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
         }
 
-                :focus-visible {
-            outline: 2px solid var(--blue);
+        :focus-visible {
+            outline: 2px solid var(--accent);
             outline-offset: 2px;
         }
+
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
             margin: 0;
             font-family: var(--font-body);
             color: var(--ink);
-            background:
-                radial-gradient(1100px 600px at 100% -10%, rgba(56, 189, 248, 0.18), transparent 60%),
-                radial-gradient(900px 500px at -10% 20%, rgba(191, 228, 255, 0.5), transparent 55%),
-                var(--bg);
+            background: var(--bg-light);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
         img { max-width: 100%; display: block; }
         a { color: inherit; text-decoration: none; }
-        h1, h2, h3 { font-family: var(--font-head); line-height: 1.12; margin: 0; letter-spacing: -0.02em; }
+        h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.15; margin: 0; letter-spacing: -0.02em; }
         p { margin: 0; }
-        .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 22px; }
-        section { padding: 88px 0; scroll-margin-top: 84px; }
-        .section-head { max-width: 680px; margin: 0 auto 46px; text-align: center; }
+        .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+        section { padding: 96px 0; scroll-margin-top: 80px; position: relative; }
+        .section-head { max-width: 720px; margin: 0 auto 52px; text-align: center; }
+        
         .eyebrow {
             display: inline-flex; align-items: center; gap: 8px;
-            font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
             color: var(--blue-d); background: rgba(31, 111, 214, 0.1);
-            padding: 8px 14px; border-radius: 999px; margin-bottom: 16px;
+            padding: 8px 16px; border-radius: 999px; margin-bottom: 16px;
+            backdrop-filter: blur(8px);
         }
-        .section-head h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); margin-bottom: 14px; }
-        .section-head p { color: var(--muted); font-size: 1.05rem; }
+        .section-head h2 { font-size: clamp(2rem, 4.2vw, 2.9rem); margin-bottom: 16px; color: var(--ink); }
+        .section-head p { color: var(--muted); font-size: 1.1rem; line-height: 1.6; }
 
         .btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 10px;
             padding: 14px 26px; border-radius: 14px; font-weight: 700; font-size: 0.98rem;
             border: 0; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-            font-family: var(--font-body);
-            white-space: nowrap;
+            font-family: var(--font-body); white-space: nowrap;
         }
         .btn:hover { transform: translateY(-2px); }
-        .btn-primary { background: linear-gradient(135deg, var(--blue), var(--blue-d)); color: #fff; box-shadow: 0 12px 26px rgba(11, 74, 162, 0.28); }
-        .btn-primary:hover { box-shadow: 0 16px 34px rgba(11, 74, 162, 0.36); }
-        .btn-ghost { background: rgba(255, 255, 255, 0.12); color: #fff; border: 1px solid rgba(255, 255, 255, 0.4); backdrop-filter: blur(6px); }
-        .btn-ghost:hover { background: rgba(255, 255, 255, 0.2); }
-        .btn-light { background: #fff; color: var(--blue-d); box-shadow: var(--shadow-sm); }
+        .btn:active { transform: translateY(0); }
+        .btn-primary {
+            background: linear-gradient(135deg, #1f6fd6, #0b4aa2);
+            color: #fff;
+            box-shadow: 0 12px 28px rgba(11, 74, 162, 0.32);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 16px 36px rgba(11, 74, 162, 0.42);
+        }
+        .btn-emerald {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            box-shadow: 0 12px 28px rgba(16, 185, 129, 0.32);
+        }
+        .btn-emerald:hover {
+            box-shadow: 0 16px 36px rgba(16, 185, 129, 0.45);
+        }
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.12); color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(10px);
+        }
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.22);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+        .btn-light {
+            background: #fff; color: var(--blue-d);
+            box-shadow: var(--shadow-sm); border: 1px solid rgba(10, 35, 66, 0.08);
+        }
+        .btn-light:hover {
+            box-shadow: var(--shadow);
+            background: #f8fbff;
+        }
 
-        /* Header & Navigation */
+        /* Top Bar Ticker */
+        .top-ticker {
+            background: #040a14;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            z-index: 55;
+        }
+        .top-ticker .container {
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+        }
+        .ticker-telemetry {
+            display: inline-flex; align-items: center; gap: 8px; color: var(--accent);
+        }
+        .ticker-live-dot {
+            width: 7px; height: 7px; border-radius: 50%;
+            background: var(--emerald);
+            box-shadow: 0 0 10px var(--emerald);
+            animation: pulse-dot 2s infinite ease-in-out;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
+        .ticker-contacts {
+            display: inline-flex; align-items: center; gap: 16px;
+        }
+        .ticker-contacts a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.2s;
+            display: inline-flex; align-items: center; gap: 5px;
+        }
+        .ticker-contacts a:hover { color: #fff; }
+
+        /* Header & Nav */
         header.site-header {
             position: fixed; inset: 0 0 auto 0; z-index: 50;
-            background: rgba(240, 248, 254, 0.88);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(244, 249, 253, 0.88);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
             border-bottom: 1px solid transparent;
-            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, transform 0.25s ease;
         }
         header.site-header.scrolled {
             border-color: var(--line);
-            background: rgba(240, 248, 254, 0.96);
-            box-shadow: 0 8px 24px rgba(10, 35, 66, 0.08);
+            background: rgba(244, 249, 253, 0.96);
+            box-shadow: 0 8px 24px rgba(7, 23, 44, 0.08);
         }
-        .nav {
-            display: flex; align-items: center; justify-content: space-between;
-            height: 74px; gap: 18px; flex-wrap: nowrap;
-        }
+        .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 18px; flex-wrap: nowrap; }
         .logo {
             display: inline-flex; align-items: center; gap: 12px;
-            font-family: var(--font-head); font-weight: 700; font-size: 1.05rem;
+            font-family: var(--font-head); font-weight: 700; font-size: 1.08rem;
             letter-spacing: -0.01em; color: var(--ink);
-            transition: opacity 0.2s ease;
             white-space: nowrap; flex-shrink: 0;
+            transition: opacity 0.2s ease;
         }
         .logo:hover { opacity: 0.92; }
         .logo-mark {
-            width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
-            background: linear-gradient(135deg, var(--blue), var(--accent)); color: #fff; font-size: 1.05rem;
-            box-shadow: 0 8px 18px rgba(31, 111, 214, 0.3);
+            width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+            background: linear-gradient(135deg, var(--blue), var(--accent)); color: #fff; font-size: 1.1rem;
+            box-shadow: 0 8px 20px rgba(31, 111, 214, 0.35);
             transition: transform 0.3s ease; flex-shrink: 0;
         }
         .logo:hover .logo-mark { transform: rotate(15deg) scale(1.05); }
@@ -134,7 +208,7 @@
             letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
             margin-top: 2px;
         }
-        .nav-links { display: flex; align-items: center; gap: 22px; flex-shrink: 0; flex-wrap: nowrap; }
+        .nav-links { display: flex; align-items: center; gap: 24px; flex-shrink: 0; flex-wrap: nowrap; }
         .nav-links a {
             position: relative; padding: 6px 0;
             font-size: 0.92rem; font-weight: 600; color: var(--ink-2);
@@ -151,10 +225,11 @@
         .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
         .nav-links a.active { opacity: 1; color: var(--blue); font-weight: 700; }
         .nav-mobile-cta { display: none; }
-        .nav-actions { display: flex; align-items: center; gap: 10px; }
+        .nav-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+        
         .lang-btn, .menu-btn {
-            height: 40px; min-width: 40px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.85); color: var(--ink); font-weight: 700; font-size: 0.84rem;
+            height: 42px; min-width: 42px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.9); color: var(--ink); font-weight: 700; font-size: 0.84rem;
             cursor: pointer; font-family: var(--font-body);
             display: inline-flex; align-items: center; justify-content: center; gap: 6px;
             transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
@@ -162,262 +237,559 @@
         .lang-btn i { font-size: 0.88rem; color: var(--blue); }
         .lang-btn:hover, .menu-btn:hover {
             background: #fff; border-color: rgba(31, 111, 214, 0.45);
-            box-shadow: 0 4px 12px rgba(10, 35, 66, 0.08);
+            box-shadow: 0 4px 14px rgba(7, 23, 44, 0.08);
             transform: translateY(-1px);
         }
-        .menu-btn { display: none; width: 42px; padding: 0; font-size: 1.1rem; }
-        .nav .btn { padding: 10px 20px; font-size: 0.9rem; border-radius: 12px; }
+        .menu-btn { display: none; width: 44px; padding: 0; font-size: 1.15rem; }
+        .nav .btn { padding: 11px 22px; font-size: 0.9rem; border-radius: 12px; }
 
         /* Nav Overlay for Mobile */
         .nav-overlay {
             position: fixed; inset: 0; z-index: 45;
-            background: rgba(10, 35, 66, 0.45);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            background: rgba(6, 15, 29, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             opacity: 0; visibility: hidden;
             transition: opacity 0.25s ease, visibility 0.25s ease;
         }
         .nav-overlay.active { opacity: 1; visibility: visible; }
 
-        /* Hero */
+        /* Hero Section */
         .hero {
-            position: relative; min-height: 94vh; display: flex; align-items: center;
-            padding: 140px 0 90px; overflow: hidden;
-            background: linear-gradient(180deg, rgba(7, 26, 48, 0.45) 0%, rgba(7, 26, 48, 0.62) 55%, rgba(7, 26, 48, 0.82) 100%),
-                        url('img/hero.jpg') center/cover no-repeat;
+            position: relative; min-height: 96vh; display: flex; align-items: center;
+            padding: 150px 0 100px; overflow: hidden;
+            background: #060f1d;
+            color: #fff;
         }
-        .hero::after {
-            content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 120px;
-            background: linear-gradient(180deg, transparent, var(--bg));
-            pointer-events: none;
+        .hero-bg-media {
+            position: absolute; inset: 0; z-index: 0;
+            background:
+                linear-gradient(180deg, rgba(6, 15, 29, 0.5) 0%, rgba(6, 15, 29, 0.72) 60%, #060f1d 100%),
+                radial-gradient(800px 500px at 80% 30%, rgba(56, 189, 248, 0.18), transparent 70%),
+                radial-gradient(900px 600px at 15% 40%, rgba(31, 111, 214, 0.28), transparent 70%),
+                url('img/hero.jpg') center/cover no-repeat;
+            background-blend-mode: normal, screen, screen, normal;
         }
-        .hero-inner { position: relative; z-index: 1; max-width: 760px; color: #fff; }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 9px; padding: 9px 16px; border-radius: 999px;
-            background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.28);
-            backdrop-filter: blur(8px); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; margin-bottom: 24px;
+        #snowCanvas {
+            position: absolute; inset: 0; z-index: 1; pointer-events: none;
+            width: 100%; height: 100%;
         }
-        .hero h1 { font-size: clamp(2.4rem, 6vw, 4.1rem); margin-bottom: 20px; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.25); }
-        .hero p.lead { font-size: clamp(1.02rem, 2vw, 1.22rem); color: rgba(255, 255, 255, 0.9); max-width: 620px; margin-bottom: 34px; }
-        .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 52px; }
-        .hero-stats { display: flex; flex-wrap: wrap; gap: 14px; }
-        .stat {
-            padding: 16px 22px; border-radius: 16px; background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.22); backdrop-filter: blur(8px); min-width: 128px;
+        .hero-inner { position: relative; z-index: 2; max-width: 820px; }
+        
+        .hero-badge-wrap {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 8px 16px; border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em;
+            margin-bottom: 24px; color: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
-        .stat b { display: block; font-family: var(--font-head); font-size: 1.5rem; line-height: 1.1; }
-        .stat span { font-size: 0.8rem; color: rgba(255, 255, 255, 0.78); }
+        .hero-badge-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--emerald); box-shadow: 0 0 12px var(--emerald);
+            animation: pulse-dot 2s infinite ease-in-out;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6.2vw, 4.4rem); margin-bottom: 22px;
+            text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+            letter-spacing: -0.03em;
+        }
+        .hero h1 span.gradient-text {
+            background: linear-gradient(135deg, #fff 40%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p.lead {
+            font-size: clamp(1.08rem, 2.2vw, 1.26rem);
+            color: rgba(255, 255, 255, 0.92);
+            max-width: 660px; margin-bottom: 38px; line-height: 1.65;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        .hero-cta { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 56px; }
+        .hero-cta .btn { padding: 16px 30px; font-size: 1.02rem; }
+        
+        .hero-stats {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+        }
+        .stat-card {
+            padding: 18px 20px; border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(12px);
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+        .stat-card b {
+            display: block; font-family: var(--font-head); font-size: 1.85rem; line-height: 1.1;
+            color: #fff; margin-bottom: 4px;
+        }
+        .stat-card span {
+            font-size: 0.82rem; font-weight: 500;
+            color: rgba(255, 255, 255, 0.78); line-height: 1.3;
+        }
 
         /* Locations */
-        .locations-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
-        .loc-card { background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid rgba(255, 255, 255, 0.7); display: flex; flex-direction: column; }
-        .loc-media { position: relative; height: 250px; overflow: hidden; }
-        .loc-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        .loc-card:hover .loc-media img { transform: scale(1.05); }
-        .loc-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7, 26, 48, 0.05), rgba(7, 26, 48, 0.55)); }
-        .loc-media .loc-name { position: absolute; left: 22px; right: 22px; bottom: 18px; z-index: 1; color: #fff; font-family: var(--font-head); font-size: 1.28rem; font-weight: 700; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.3); }
-        .loc-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
-        .loc-body > p { color: var(--muted); font-size: 0.95rem; margin-bottom: 20px; }
-        .rate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
-        .rate {
-            background: var(--surface-2); border: 1px solid rgba(31, 111, 214, 0.1);
-            border-radius: 14px; padding: 14px 12px; text-align: center;
+        #locations {
+            background:
+                radial-gradient(900px 500px at 100% 0%, rgba(56, 189, 248, 0.12), transparent 70%),
+                radial-gradient(800px 500px at 0% 50%, rgba(191, 228, 255, 0.35), transparent 70%),
+                var(--bg-light);
         }
-        .rate .r-label { display: block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--blue-d); margin-bottom: 6px; }
-        .rate .r-price { font-family: var(--font-head); font-weight: 700; font-size: 1.12rem; color: var(--ink); white-space: nowrap; }
-        .rate .r-unit { display: block; font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
-        .loc-feats { list-style: none; padding: 0; margin: 0 0 22px; display: grid; gap: 9px; }
-        .loc-feats li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--ink-2); }
-        .loc-feats i { color: var(--blue); font-size: 0.85rem; }
+        .locations-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+        .loc-card {
+            background: var(--surface); border-radius: var(--radius-lg); overflow: hidden;
+            box-shadow: var(--shadow); border: 1px solid rgba(255, 255, 255, 0.9);
+            display: flex; flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .loc-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .loc-media { position: relative; height: 270px; overflow: hidden; }
+        .loc-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+        .loc-card:hover .loc-media img { transform: scale(1.06); }
+        .loc-media::after {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(6, 15, 29, 0.05) 0%, rgba(6, 15, 29, 0.75) 100%);
+        }
+        .loc-badge-time {
+            position: absolute; top: 18px; left: 18px; z-index: 2;
+            display: inline-flex; align-items: center; gap: 7px;
+            background: rgba(6, 15, 29, 0.75); color: #fff;
+            backdrop-filter: blur(8px); padding: 6px 13px; border-radius: 999px;
+            font-size: 0.76rem; font-weight: 700; letter-spacing: 0.03em;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .loc-media .loc-name {
+            position: absolute; left: 24px; right: 24px; bottom: 20px; z-index: 2;
+            color: #fff; font-family: var(--font-head); font-size: 1.4rem; font-weight: 700;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+        }
+        .loc-body { padding: 28px; display: flex; flex-direction: column; flex: 1; }
+        .loc-body > p { color: var(--muted); font-size: 0.98rem; margin-bottom: 24px; line-height: 1.6; }
+        
+        .rate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+        .rate {
+            background: #f1f7fd; border: 1px solid rgba(31, 111, 214, 0.12);
+            border-radius: 16px; padding: 14px 12px; text-align: center;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .rate:hover { background: #e8f3fc; border-color: rgba(31, 111, 214, 0.25); }
+        .rate .r-label {
+            display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--blue-d); margin-bottom: 6px;
+        }
+        .rate .r-price {
+            font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; color: var(--ink);
+            white-space: nowrap;
+        }
+        .rate .r-unit { display: block; font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
+        
+        .loc-feats { list-style: none; padding: 0; margin: 0 0 26px; display: grid; gap: 11px; }
+        .loc-feats li { display: flex; align-items: center; gap: 12px; font-size: 0.92rem; color: var(--ink-2); font-weight: 500; }
+        .loc-feats i {
+            width: 24px; height: 24px; border-radius: 50%;
+            background: rgba(31, 111, 214, 0.12); color: var(--blue);
+            display: grid; place-items: center; font-size: 0.75rem; flex-shrink: 0;
+        }
         .loc-body .btn { margin-top: auto; width: 100%; }
 
         /* Cars */
-        .cars-section { background: linear-gradient(180deg, transparent, rgba(191, 228, 255, 0.35)); }
-        .cars-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
-        .car-card { background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid rgba(255, 255, 255, 0.7); }
-        .car-media { position: relative; height: 290px; overflow: hidden; background: #dbe9f4; }
-        .car-media img.car-photo { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.6s ease; }
-        .car-card:hover .car-media img.car-photo { transform: scale(1.04); }
-        .car-box {
-            position: absolute; top: 14px; left: 14px; z-index: 2;
-            display: flex; align-items: center; gap: 8px;
-            background: rgba(255, 255, 255, 0.94); border: 1px solid rgba(10, 35, 66, 0.08);
-            border-radius: 13px; padding: 7px 12px; box-shadow: 0 8px 20px rgba(10, 35, 66, 0.16);
-            backdrop-filter: blur(4px);
+        .cars-section {
+            background: linear-gradient(180deg, transparent, rgba(191, 228, 255, 0.35) 60%, transparent);
         }
-        .car-box img { height: 30px; width: auto; }
-        .car-box span { font-size: 0.72rem; font-weight: 700; color: var(--ink-2); line-height: 1.1; }
-        .car-body { padding: 24px; }
-        .car-title-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 16px; }
-        .car-title-row h3 { font-size: 1.22rem; }
-        .car-color { font-size: 0.78rem; font-weight: 700; color: var(--blue-d); background: rgba(31, 111, 214, 0.1); padding: 5px 11px; border-radius: 999px; white-space: nowrap; }
-        .specs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .spec { display: flex; align-items: center; gap: 10px; background: var(--surface-2); border-radius: 12px; padding: 11px 13px; }
-        .spec i { color: var(--blue); font-size: 0.95rem; }
-        .spec .s-label { font-size: 0.7rem; color: var(--muted); display: block; line-height: 1.2; }
-        .spec .s-val { font-size: 0.88rem; font-weight: 700; color: var(--ink); }
+        .cars-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+        .car-card {
+            background: var(--surface); border-radius: var(--radius-lg); overflow: hidden;
+            box-shadow: var(--shadow); border: 1px solid rgba(255, 255, 255, 0.9);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .car-card:hover {
+            transform: translateY(-4px); box-shadow: var(--shadow-lg);
+        }
+        .car-media { position: relative; height: 300px; overflow: hidden; background: #cddff0; }
+        .car-media img.car-photo { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+        .car-card:hover .car-media img.car-photo { transform: scale(1.05); }
+        
+        .car-box {
+            position: absolute; top: 16px; left: 16px; z-index: 2;
+            display: flex; align-items: center; gap: 9px;
+            background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(10, 35, 66, 0.08);
+            border-radius: 14px; padding: 8px 14px; box-shadow: 0 8px 20px rgba(10, 35, 66, 0.14);
+            backdrop-filter: blur(6px);
+        }
+        .car-box img { height: 32px; width: auto; }
+        .car-box span { font-size: 0.78rem; font-weight: 700; color: var(--ink-2); line-height: 1.1; }
+        
+        .car-body { padding: 28px; }
+        .car-title-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+        .car-title-row h3 { font-size: 1.3rem; }
+        .car-color {
+            font-size: 0.8rem; font-weight: 700; color: var(--blue-d);
+            background: rgba(31, 111, 214, 0.1); padding: 6px 13px; border-radius: 999px;
+            white-space: nowrap;
+        }
+        .specs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+        .spec {
+            display: flex; align-items: center; gap: 12px;
+            background: #f1f7fd; border-radius: 14px; padding: 12px 14px;
+        }
+        .spec i { color: var(--blue); font-size: 1rem; flex-shrink: 0; }
+        .spec .s-label { font-size: 0.72rem; color: var(--muted); display: block; line-height: 1.2; }
+        .spec .s-val { font-size: 0.92rem; font-weight: 700; color: var(--ink); }
+
+        .car-equip-bar {
+            display: flex; flex-wrap: wrap; gap: 8px;
+            padding-top: 16px; border-top: 1px solid var(--line);
+        }
+        .equip-pill {
+            font-size: 0.76rem; font-weight: 600; color: var(--ink-2);
+            background: rgba(10, 35, 66, 0.05); padding: 5px 11px; border-radius: 8px;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .equip-pill i { color: var(--emerald); font-size: 0.7rem; }
+
+        /* Comparison Section (Why Us vs Taxi) */
+        .why-section {
+            background: #060f1d; color: #fff;
+            padding: 100px 0; position: relative; overflow: hidden;
+        }
+        .why-section .section-head h2 { color: #fff; }
+        .why-section .section-head p { color: rgba(255, 255, 255, 0.75); }
+        .why-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+            max-width: 1000px; margin: 0 auto;
+        }
+        .why-card {
+            border-radius: var(--radius-lg); padding: 36px 32px;
+            position: relative; overflow: hidden;
+        }
+        .why-card-taxi {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .why-card-us {
+            background: linear-gradient(145deg, rgba(31, 111, 214, 0.18), rgba(56, 189, 248, 0.08));
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+        }
+        .why-card-us::before {
+            content: "РЕКОМЕНДУЕМ"; position: absolute; top: 16px; right: 16px;
+            background: var(--emerald); color: #fff; font-size: 0.68rem; font-weight: 800;
+            padding: 4px 10px; border-radius: 999px; letter-spacing: 0.08em;
+        }
+        .why-card-head {
+            display: flex; align-items: center; gap: 14px; margin-bottom: 26px;
+        }
+        .why-card-icon {
+            width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center;
+            font-size: 1.25rem; flex-shrink: 0;
+        }
+        .why-card-taxi .why-card-icon { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+        .why-card-us .why-card-icon { background: rgba(56, 189, 248, 0.2); color: var(--accent); }
+        .why-card h3 { font-size: 1.35rem; }
+        
+        .why-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+        .why-list li {
+            display: flex; align-items: flex-start; gap: 13px; font-size: 0.94rem;
+            color: rgba(255, 255, 255, 0.86); line-height: 1.5;
+        }
+        .why-list li i { margin-top: 4px; font-size: 0.85rem; flex-shrink: 0; }
+        .why-card-taxi .why-list li i { color: #f87171; }
+        .why-card-us .why-list li i { color: var(--emerald); }
 
         /* Prices */
-        .table-wrap { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid rgba(255, 255, 255, 0.7); overflow: hidden; }
-        table.rates { width: 100%; border-collapse: collapse; }
-        table.rates th, table.rates td { padding: 18px 22px; text-align: left; font-size: 0.94rem; }
-        table.rates thead th { background: linear-gradient(135deg, var(--blue-d), var(--blue)); color: #fff; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; }
-        table.rates tbody tr + tr { border-top: 1px solid var(--line); }
-        table.rates tbody tr:nth-child(even) { background: rgba(228, 241, 251, 0.4); }
-        table.rates td:first-child { font-weight: 700; }
-        table.rates td .kgs { font-family: var(--font-head); font-weight: 700; }
-        .notes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 26px; }
-        .note { display: flex; gap: 13px; background: var(--surface); border: 1px solid rgba(31, 111, 214, 0.12); border-radius: 15px; padding: 16px 18px; box-shadow: var(--shadow-sm); }
-        .note i { color: var(--blue); margin-top: 3px; }
-        .note p { font-size: 0.9rem; color: var(--ink-2); }
-
-        /* How */
-        .how-wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
-        .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
-        .step { display: flex; gap: 18px; }
-        .step-num {
-            flex: 0 0 auto; width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center;
-            font-family: var(--font-head); font-weight: 700; font-size: 1.05rem; color: #fff;
-            background: linear-gradient(135deg, var(--blue), var(--accent));
-            box-shadow: 0 10px 22px rgba(31, 111, 214, 0.28);
+        .table-wrap {
+            background: var(--surface); border-radius: var(--radius-lg);
+            box-shadow: var(--shadow); border: 1px solid rgba(255, 255, 255, 0.9);
+            overflow: hidden;
         }
-        .step h3 { font-size: 1.05rem; margin-bottom: 4px; }
-        .step p { color: var(--muted); font-size: 0.92rem; }
-        .how-visual { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); min-height: 380px; }
+        table.rates { width: 100%; border-collapse: collapse; }
+        table.rates th, table.rates td { padding: 20px 24px; text-align: left; font-size: 0.96rem; }
+        table.rates thead th {
+            background: linear-gradient(135deg, var(--blue-d), var(--blue));
+            color: #fff; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em;
+        }
+        table.rates tbody tr + tr { border-top: 1px solid var(--line); }
+        table.rates tbody tr:nth-child(even) { background: rgba(241, 247, 253, 0.5); }
+        table.rates td:first-child { font-weight: 700; }
+        table.rates td .kgs { font-family: var(--font-head); font-weight: 700; color: var(--ink); }
+        
+        .notes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 30px; }
+        .note {
+            display: flex; gap: 14px; background: var(--surface);
+            border: 1px solid rgba(31, 111, 214, 0.14); border-radius: 16px;
+            padding: 18px 20px; box-shadow: var(--shadow-sm);
+        }
+        .note i { color: var(--blue); font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+        .note p { font-size: 0.92rem; color: var(--ink-2); line-height: 1.55; }
+
+        /* How it works */
+        .how-wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 52px; align-items: center; }
+        .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 20px; }
+        .step {
+            display: flex; gap: 20px; background: var(--surface);
+            padding: 20px 22px; border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .step:hover { transform: translateX(4px); box-shadow: var(--shadow); }
+        .step-num {
+            flex: 0 0 auto; width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
+            font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; color: #fff;
+            background: linear-gradient(135deg, var(--blue), var(--accent));
+            box-shadow: 0 10px 22px rgba(31, 111, 214, 0.3);
+        }
+        .step h3 { font-size: 1.15rem; margin-bottom: 5px; }
+        .step p { color: var(--muted); font-size: 0.94rem; line-height: 1.5; }
+        
+        .how-visual { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); min-height: 420px; }
         .how-visual img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
         .how-note {
-            position: absolute; left: 20px; right: 20px; bottom: 20px; display: flex; align-items: center; gap: 12px;
-            background: rgba(10, 35, 66, 0.72); backdrop-filter: blur(8px); color: #fff;
-            border-radius: 14px; padding: 14px 18px; font-size: 0.9rem; font-weight: 600;
+            position: absolute; left: 20px; right: 20px; bottom: 20px; display: flex; align-items: center; gap: 14px;
+            background: rgba(6, 15, 29, 0.82); backdrop-filter: blur(10px); color: #fff;
+            border-radius: 16px; padding: 16px 20px; font-size: 0.92rem; font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
-        .how-note i { color: var(--accent); font-size: 1.1rem; }
+        .how-note i { color: var(--accent); font-size: 1.25rem; flex-shrink: 0; }
 
-        /* Booking */
-        .booking-section { background: linear-gradient(180deg, rgba(191, 228, 255, 0.35), transparent); }
-        .booking-card { background: var(--surface); border-radius: 26px; box-shadow: var(--shadow); border: 1px solid rgba(255, 255, 255, 0.8); padding: 40px; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; align-items: start; }
-        .booking-card h2 { font-size: clamp(1.6rem, 3.4vw, 2.2rem); margin-bottom: 14px; }
-        .booking-card > div > p { color: var(--muted); margin-bottom: 22px; }
-        .booking-side .mini-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-        .booking-side .mini-list li { display: flex; align-items: center; gap: 11px; font-size: 0.9rem; color: var(--ink-2); }
-        .booking-side .mini-list i { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; background: rgba(31, 111, 214, 0.1); color: var(--blue); font-size: 0.82rem; }
-        form.booking-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-        .field { display: flex; flex-direction: column; gap: 6px; }
+        /* Booking Section */
+        .booking-section {
+            background:
+                radial-gradient(1000px 600px at 50% 0%, rgba(191, 228, 255, 0.5), transparent 70%),
+                var(--bg-light);
+        }
+        .booking-card {
+            background: var(--surface); border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg); border: 1px solid rgba(255, 255, 255, 0.95);
+            padding: 44px; display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 48px;
+            align-items: start;
+        }
+        .booking-side h2 { font-size: clamp(1.8rem, 3.6vw, 2.4rem); margin-bottom: 16px; }
+        .booking-side > p { color: var(--muted); margin-bottom: 28px; font-size: 1.02rem; }
+        .booking-side .mini-list { list-style: none; padding: 0; margin: 0 0 32px; display: grid; gap: 14px; }
+        .booking-side .mini-list li { display: flex; align-items: center; gap: 13px; font-size: 0.94rem; color: var(--ink-2); font-weight: 600; }
+        .booking-side .mini-list i {
+            width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center;
+            background: rgba(31, 111, 214, 0.1); color: var(--blue); font-size: 0.88rem; flex-shrink: 0;
+        }
+        
+        .whatsapp-preview-box {
+            background: #eef7f2; border: 1px solid rgba(16, 185, 129, 0.25);
+            border-radius: 16px; padding: 18px 20px;
+        }
+        .wp-box-head {
+            display: flex; align-items: center; gap: 10px; font-weight: 700;
+            font-size: 0.85rem; color: #065f46; margin-bottom: 10px;
+        }
+        .wp-box-text {
+            font-family: monospace; font-size: 0.82rem; color: #047857;
+            white-space: pre-line; line-height: 1.45; word-break: break-word;
+        }
+
+        form.booking-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .field { display: flex; flex-direction: column; gap: 7px; }
         .field.full { grid-column: 1 / -1; }
-        .field label { font-size: 0.8rem; font-weight: 700; color: var(--ink-2); }
+        .field label { font-size: 0.82rem; font-weight: 700; color: var(--ink-2); }
         .field input, .field select {
-            width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line);
-            background: #f7fbff; font-family: var(--font-body); font-size: 0.92rem; color: var(--ink);
+            width: 100%; padding: 13px 16px; border-radius: 13px; border: 1px solid var(--line);
+            background: #f8fbff; font-family: var(--font-body); font-size: 0.94rem; color: var(--ink);
             transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
         }
         .field select {
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
+            appearance: none; -webkit-appearance: none; -moz-appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2358708a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 14px center;
             background-size: 14px;
-            padding-right: 38px;
+            padding-right: 40px;
             cursor: pointer;
         }
-        .field select:hover, .field input:hover {
-            border-color: rgba(31, 111, 214, 0.35);
+        .field input:focus, .field select:focus {
+            outline: none; border-color: var(--blue); background: #fff;
+            box-shadow: 0 0 0 3px rgba(31, 111, 214, 0.16);
         }
-        .field input:focus, .field select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(31, 111, 214, 0.14); }
-        .estimate { grid-column: 1 / -1; background: linear-gradient(135deg, rgba(31, 111, 214, 0.08), rgba(56, 189, 248, 0.12)); border: 1px dashed rgba(31, 111, 214, 0.35); border-radius: 13px; padding: 13px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-        .estimate .e-label { font-size: 0.8rem; font-weight: 700; color: var(--blue-d); }
-        .estimate .e-val { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; color: var(--ink); text-align: right; }
-        .booking-form .btn { grid-column: 1 / -1; }
-        .form-hint { grid-column: 1 / -1; font-size: 0.78rem; color: var(--muted); text-align: center; margin-top: -4px; }
+        .field input:hover, .field select:hover { border-color: rgba(31, 111, 214, 0.4); }
+
+        .estimate {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(31, 111, 214, 0.08), rgba(56, 189, 248, 0.14));
+            border: 1px dashed rgba(31, 111, 214, 0.4); border-radius: 14px;
+            padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px;
+        }
+        .estimate .e-label { font-size: 0.85rem; font-weight: 700; color: var(--blue-d); }
+        .estimate .e-val {
+            font-family: var(--font-head); font-weight: 700; font-size: 1.3rem; color: var(--ink);
+            text-align: right;
+        }
+        .booking-form .btn { grid-column: 1 / -1; padding: 16px; font-size: 1.05rem; }
+        .form-hint { grid-column: 1 / -1; font-size: 0.8rem; color: var(--muted); text-align: center; margin-top: -4px; }
+
+        /* FAQ Section */
+        .faq-section { background: var(--bg-light); padding: 90px 0; }
+        .faq-list { max-width: 820px; margin: 0 auto; display: grid; gap: 14px; }
+        .faq-item {
+            background: var(--surface); border: 1px solid var(--line);
+            border-radius: var(--radius); overflow: hidden;
+            box-shadow: var(--shadow-sm); transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .faq-item.open {
+            border-color: rgba(31, 111, 214, 0.4);
+            box-shadow: var(--shadow);
+        }
+        .faq-question {
+            width: 100%; text-align: left; padding: 22px 26px; border: 0; background: transparent;
+            font-family: var(--font-head); font-size: 1.12rem; font-weight: 700; color: var(--ink);
+            display: flex; align-items: center; justify-content: space-between; gap: 16px;
+            cursor: pointer;
+        }
+        .faq-icon {
+            width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
+            background: rgba(31, 111, 214, 0.1); color: var(--blue); font-size: 0.9rem;
+            flex-shrink: 0; transition: transform 0.25s ease;
+        }
+        .faq-item.open .faq-icon { transform: rotate(180deg); background: var(--blue); color: #fff; }
+        .faq-answer {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 26px; color: var(--muted); font-size: 0.96rem; line-height: 1.65;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 250px; padding: 0 26px 22px;
+        }
 
         /* Contacts */
-        .contacts-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: stretch; }
-        .contact-list { display: grid; gap: 12px; }
-        .contact-item { display: flex; align-items: center; gap: 15px; background: var(--surface); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 16px; padding: 16px 18px; box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s; }
-        .contact-item:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-        .contact-icon { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; font-size: 1.1rem; flex: 0 0 auto; }
-        .contact-item .c-label { font-size: 0.75rem; color: var(--muted); }
-        .contact-item .c-val { font-weight: 700; font-size: 0.95rem; word-break: break-word; }
-        .quick-card { background: linear-gradient(150deg, var(--blue-d), var(--blue) 55%, #2c8fe0); color: #fff; border-radius: var(--radius); padding: 34px 30px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
-        .quick-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
-        .quick-card p { color: rgba(255, 255, 255, 0.86); font-size: 0.94rem; margin-bottom: 24px; }
+        .contacts-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: stretch; }
+        .contact-list { display: grid; gap: 14px; }
+        .contact-item {
+            display: flex; align-items: center; gap: 16px; background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 18px; padding: 18px 22px;
+            box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        .contact-item:hover {
+            transform: translateY(-2px); box-shadow: var(--shadow);
+            border-color: rgba(31, 111, 214, 0.3);
+        }
+        .contact-icon { width: 50px; height: 50px; border-radius: 14px; display: grid; place-items: center; font-size: 1.2rem; flex: 0 0 auto; }
+        .contact-item .c-label { font-size: 0.78rem; color: var(--muted); }
+        .contact-item .c-val { font-weight: 700; font-size: 1rem; word-break: break-word; color: var(--ink); }
+        
+        .quick-card {
+            background: linear-gradient(150deg, #071e3d, #14447e 55%, #1f6fd6);
+            color: #fff; border-radius: var(--radius-lg); padding: 40px 34px; box-shadow: var(--shadow-lg);
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .quick-card h3 { font-size: 1.55rem; margin-bottom: 12px; }
+        .quick-card p { color: rgba(255, 255, 255, 0.88); font-size: 0.98rem; margin-bottom: 26px; line-height: 1.55; }
         .quick-card .btn { width: 100%; margin-top: 10px; }
 
         /* Footer */
-        footer { padding: 40px 0; border-top: 1px solid var(--line); }
-        .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+        footer { padding: 44px 0; border-top: 1px solid var(--line); background: #fff; }
+        .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
         .footer-inner .logo span small { color: var(--muted); }
-        .footer-inner p { font-size: 0.82rem; color: var(--muted); }
-        .footer-tagline { font-size: 0.85rem; color: var(--muted); }
+        .footer-inner p { font-size: 0.85rem; color: var(--muted); }
+        .footer-tagline { font-size: 0.88rem; color: var(--muted); }
 
+        /* Floating Mobile Sticky Action Bar */
+        .mobile-bottom-bar {
+            display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 46;
+            background: rgba(6, 15, 29, 0.94);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            padding: 12px 18px; border-top: 1px solid rgba(255, 255, 255, 0.14);
+            box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.2);
+        }
+        .mobile-bottom-bar-inner {
+            display: flex; align-items: center; gap: 12px; max-width: 500px; margin: 0 auto;
+        }
+        .mob-btn {
+            flex: 1; padding: 12px 16px; border-radius: 12px; font-weight: 700; font-size: 0.88rem;
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            white-space: nowrap; border: 0; cursor: pointer; text-decoration: none;
+        }
+        .mob-btn-wa { background: #10b981; color: #fff; }
+        .mob-btn-book { background: var(--blue); color: #fff; }
+
+        /* Responsive */
         @media (max-width: 1160px) {
             .logo span small { display: none; }
             .nav-links { gap: 16px; }
             .nav-links a { font-size: 0.88rem; }
             .nav .btn { padding: 9px 15px; font-size: 0.86rem; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
         }
         @media (max-width: 1000px) {
             .nav-links {
                 position: fixed; top: 74px; left: 0; right: 0; z-index: 48;
                 flex-direction: column; align-items: stretch; gap: 4px;
                 background: rgba(245, 250, 255, 0.98);
-                backdrop-filter: blur(18px);
-                -webkit-backdrop-filter: blur(18px);
-                padding: 16px 20px 24px;
-                border-bottom: 1px solid var(--line);
+                backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+                padding: 16px 20px 24px; border-bottom: 1px solid var(--line);
                 box-shadow: 0 20px 35px rgba(10, 35, 66, 0.12);
-                max-height: calc(100vh - 74px);
-                overflow-y: auto;
-                transform: translateY(-10px);
-                opacity: 0; visibility: hidden;
+                max-height: calc(100vh - 74px); overflow-y: auto;
+                transform: translateY(-10px); opacity: 0; visibility: hidden;
                 transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s ease;
             }
-            .nav-links.open {
-                display: flex;
-                transform: translateY(0);
-                opacity: 1; visibility: visible;
-            }
+            .nav-links.open { display: flex; transform: translateY(0); opacity: 1; visibility: visible; }
             .nav-links a {
                 padding: 13px 16px; width: 100%; border-radius: 12px;
                 font-size: 0.98rem; border-bottom: 0;
                 display: flex; align-items: center; justify-content: space-between;
             }
             .nav-links a::after { display: none; }
-            .nav-links a:hover, .nav-links a.active {
-                background: rgba(31, 111, 214, 0.08); color: var(--blue);
-            }
-            .nav-mobile-cta {
-                display: flex !important; width: 100%; margin-top: 10px;
-                padding: 14px 20px; font-size: 0.96rem;
-            }
+            .nav-links a:hover, .nav-links a.active { background: rgba(31, 111, 214, 0.08); color: var(--blue); }
+            .nav-mobile-cta { display: flex !important; width: 100%; margin-top: 10px; padding: 14px 20px; font-size: 0.96rem; }
             .menu-btn { display: inline-flex; align-items: center; justify-content: center; }
             .nav .nav-desktop-cta { display: none; }
-            .locations-grid, .cars-grid, .how-wrap, .booking-card, .contacts-grid { grid-template-columns: 1fr; }
-            .how-visual { min-height: 300px; }
-            .booking-card { padding: 28px; gap: 28px; }
+            .locations-grid, .cars-grid, .why-grid, .how-wrap, .booking-card, .contacts-grid { grid-template-columns: 1fr; }
+            .how-visual { min-height: 320px; }
+            .booking-card { padding: 32px 24px; gap: 32px; }
+        }
+        @media (max-width: 768px) {
+            .mobile-bottom-bar { display: block; }
+            body { padding-bottom: 70px; }
+            .top-ticker { display: none; }
         }
         @media (max-width: 640px) {
-            section { padding: 64px 0; }
-            .hero { min-height: 90vh; padding: 120px 0 70px; }
-            .hero-stats { gap: 10px; }
-            .stat { padding: 12px 16px; min-width: 104px; }
+            section { padding: 68px 0; }
+            .hero { min-height: 88vh; padding: 125px 0 70px; }
+            .hero-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .stat-card { padding: 14px 16px; }
+            .stat-card b { font-size: 1.5rem; }
             .rate-grid { grid-template-columns: 1fr; }
-            .rate { display: flex; align-items: center; justify-content: space-between; gap: 10px; text-align: left; }
+            .rate { display: flex; align-items: center; justify-content: space-between; text-align: left; padding: 12px 14px; }
             .rate .r-label { margin-bottom: 0; }
             .rate .r-unit { margin-top: 0; }
             form.booking-form { grid-template-columns: 1fr; }
             .notes { grid-template-columns: 1fr; }
             .table-wrap { overflow-x: auto; }
-            table.rates { min-width: 560px; }
-            .contact-item .c-val { font-size: 0.88rem; }
+            table.rates { min-width: 540px; }
         }
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
-            * { transition: none !important; }
+            * { transition: none !important; animation: none !important; }
+            #snowCanvas { display: none; }
         }
     </style>
 </head>
 <body>
+    <div class="top-ticker">
+        <div class="container">
+            <div class="ticker-telemetry">
+                <span class="ticker-live-dot"></span>
+                <span data-lang="hero_telemetry">Каракол: -4°C · Снег 155 см · Дорога открыта 4WD</span>
+            </div>
+            <div class="ticker-contacts">
+                <a href="https://wa.me/996558130031" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://t.me/+996558130031" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> Telegram</a>
+                <a href="tel:+996558130031"><i class="fa-solid fa-phone"></i> +996 558 130 031</a>
+            </div>
+        </div>
+    </div>
+
     <header class="site-header" id="siteHeader">
         <div class="container nav">
             <a href="#hero" class="logo" aria-label="Karakol Ski Transfer Home">
@@ -429,6 +801,7 @@
                 <a href="#cars" data-lang="nav_cars">Автомобили</a>
                 <a href="#prices" data-lang="nav_prices">Цены</a>
                 <a href="#how" data-lang="nav_how">Как это работает</a>
+                <a href="#faq" data-lang="faq_title">Частые вопросы</a>
                 <a href="#contacts" data-lang="nav_contacts">Контакты</a>
                 <a href="#booking" class="btn btn-primary nav-mobile-cta" data-lang="nav_book">Заказать трансфер</a>
             </nav>
@@ -443,18 +816,37 @@
 
     <main>
         <section class="hero" id="hero">
+            <div class="hero-bg-media"></div>
+            <canvas id="snowCanvas"></canvas>
             <div class="container">
                 <div class="hero-inner">
-                    <span class="hero-badge"><i class="fa-solid fa-snowflake"></i> <span data-lang="hero_badge">Зимний трансфер · Каракол</span></span>
-                    <h1 data-lang="hero_title">Добирайтесь до склонов без лишних хлопот</h1>
+                    <div class="hero-badge-wrap">
+                        <span class="hero-badge-dot"></span>
+                        <span data-lang="hero_badge_live">Зимний сезон 2026/2027 · Трансферы ежедневно</span>
+                    </div>
+                    <h1><span data-lang="hero_title">Добирайтесь до склонов без лишних хлопот</span></h1>
                     <p class="lead" data-lang="hero_subtitle">Трансфер с водителем на горнолыжные курорты Каракола. Поездки в одну сторону, туда и обратно или в формате сборного трансфера с подачей авто прямо к вашему отелю.</p>
                     <div class="hero-cta">
-                        <a href="#booking" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> <span data-lang="hero_cta_book">Заказать трансфер</span></a>
+                        <a href="#booking" class="btn btn-emerald"><i class="fa-brands fa-whatsapp"></i> <span data-lang="hero_cta_book">Заказать трансфер</span></a>
                         <a href="#prices" class="btn btn-ghost"><span data-lang="hero_cta_prices">Смотреть тарифы</span> <i class="fa-solid fa-arrow-down"></i></a>
                     </div>
                     <div class="hero-stats">
-                        <div class="stat"><b data-lang="hero_stat1_v">2</b><span data-lang="hero_stat1_l">внедорожника LC 100</span></div>
-                        <div class="stat"><b data-lang="hero_stat2_v">6</b><span data-lang="hero_stat2_l">пассажиров в авто</span></div>
+                        <div class="stat-card">
+                            <b data-lang="hero_stat1_v">2</b>
+                            <span data-lang="hero_stat1_l">внедорожника LC 100</span>
+                        </div>
+                        <div class="stat-card">
+                            <b data-lang="hero_stat2_v">6</b>
+                            <span data-lang="hero_stat2_l">пассажиров в авто</span>
+                        </div>
+                        <div class="stat-card">
+                            <b data-lang="hero_stat3_v">850 л</b>
+                            <span data-lang="hero_stat3_l">вместимость автобокса</span>
+                        </div>
+                        <div class="stat-card">
+                            <b data-lang="hero_stat4_v">0 сом</b>
+                            <span data-lang="hero_stat4_l">предоплата не требуется</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -470,8 +862,9 @@
                 <div class="locations-grid">
                     <article class="loc-card">
                         <div class="loc-media">
-                            <img src="img/location-karakol.jpg" alt="Karakol Ski Resort и Kapriz">
-                            <div class="loc-name" data-lang="loc1_name">Karakol Ski Resort и Kapriz</div>
+                            <span class="loc-badge-time"><i class="fa-solid fa-clock"></i> ~35 мин · 2 300 - 3 040 м</span>
+                            <img src="img/location-karakol.jpg" alt="Karakol Ski Resort и Kapriz" loading="lazy">
+                            <div class="loc-name" data-lang="loc1_name">Karakol Ski Resort &amp; Kapriz</div>
                         </div>
                         <div class="loc-body">
                             <p data-lang="loc1_desc">Главная горнолыжная база Каракола и отельный комплекс Kapriz. Удобный доступ к горнолыжным склонам, прокат снаряжения и кафе на территории комплекса.</p>
@@ -503,7 +896,8 @@
 
                     <article class="loc-card">
                         <div class="loc-media">
-                            <img src="img/location-alatoo.jpg" alt="Ala-Too Resort">
+                            <span class="loc-badge-time"><i class="fa-solid fa-clock"></i> ~50 мин · Фрирайд зона</span>
+                            <img src="img/location-alatoo.jpg" alt="Ala-Too Resort" loading="lazy">
                             <div class="loc-name" data-lang="loc2_name">Ala-Too Resort</div>
                         </div>
                         <div class="loc-body">
@@ -548,7 +942,7 @@
                     <article class="car-card">
                         <div class="car-media">
                             <div class="car-box"><img src="img/autobox.png" alt="Автобокс"><span data-lang="car_badge_box">Автобокс 850 л</span></div>
-                            <img class="car-photo" src="img/lc100-1.jpg" alt="Toyota Land Cruiser 100, чёрный">
+                            <img class="car-photo" src="img/lc100-1.jpg" alt="Toyota Land Cruiser 100, чёрный" loading="lazy">
                         </div>
                         <div class="car-body">
                             <div class="car-title-row">
@@ -561,13 +955,19 @@
                                 <div class="spec"><i class="fa-solid fa-box"></i><div><span class="s-label" data-lang="spec_box">Автобокс</span><span class="s-val" data-lang="spec_box_val">850 л</span></div></div>
                                 <div class="spec"><i class="fa-solid fa-car"></i><div><span class="s-label" data-lang="spec_year">Кузов</span><span class="s-val" data-lang="spec_year_val">LC 100</span></div></div>
                             </div>
+                            <div class="car-equip-bar">
+                                <span class="equip-pill"><i class="fa-solid fa-check"></i> <span data-lang="car_feat1">Полный привод 4WD</span></span>
+                                <span class="equip-pill"><i class="fa-solid fa-check"></i> <span data-lang="car_feat2">Автобокс 850 л</span></span>
+                                <span class="equip-pill"><i class="fa-solid fa-check"></i> <span data-lang="car_feat3">2-зонный климат</span></span>
+                                <span class="equip-pill"><i class="fa-solid fa-check"></i> <span data-lang="car_feat4">USB / Type-C зарядки</span></span>
+                            </div>
                         </div>
                     </article>
 
                     <article class="car-card">
                         <div class="car-media">
                             <div class="car-box"><img src="img/autobox.png" alt="Автобокс"><span data-lang="car_badge_box">Автобокс 850 л</span></div>
-                            <img class="car-photo" src="img/lc100-2.jpg" alt="Toyota Land Cruiser 100, серый">
+                            <img class="car-photo" src="img/lc100-2.jpg" alt="Toyota Land Cruiser 100, серый" loading="lazy">
                         </div>
                         <div class="car-body">
                             <div class="car-title-row">
@@ -580,8 +980,52 @@
                                 <div class="spec"><i class="fa-solid fa-box"></i><div><span class="s-label" data-lang="spec_box">Автобокс</span><span class="s-val" data-lang="spec_box_val">850 л</span></div></div>
                                 <div class="spec"><i class="fa-solid fa-car"></i><div><span class="s-label" data-lang="spec_year">Кузов</span><span class="s-val" data-lang="spec_year_val">LC 100</span></div></div>
                             </div>
+                            <div class="car-equip-bar">
+                                <span class="equip-pill"><i class="fa-solid fa-check"></i> <span data-lang="car_feat1">Полный привод 4WD</span></span>
+                                <span class="equip-pill"><i class="fa-solid fa-check"></i> <span data-lang="car_feat2">Автобокс 850 л</span></span>
+                                <span class="equip-pill"><i class="fa-solid fa-check"></i> <span data-lang="car_feat3">2-зонный климат</span></span>
+                                <span class="equip-pill"><i class="fa-solid fa-check"></i> <span data-lang="car_feat4">USB / Type-C зарядки</span></span>
+                            </div>
                         </div>
                     </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us vs Taxi Section -->
+        <section class="why-section">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow" style="background:rgba(56,189,248,0.15); color:var(--accent);"><i class="fa-solid fa-shield-halved"></i> <span data-lang="why_title">Почему выбирают наш трансфер</span></span>
+                    <h2 data-lang="why_title">Почему выбирают наш трансфер</h2>
+                    <p data-lang="why_subtitle">Безопасность на горном серпантине, комфорт внедорожника и честные фиксированные цены</p>
+                </div>
+                <div class="why-grid">
+                    <div class="why-card why-card-taxi">
+                        <div class="why-card-head">
+                            <div class="why-card-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                            <h3 data-lang="why_taxi_title">Обычное городское такси</h3>
+                        </div>
+                        <ul class="why-list">
+                            <li><i class="fa-solid fa-xmark"></i> <span data-lang="why_taxi_1">Легковые авто без полного привода, риск застрять на обледенелом серпантине</span></li>
+                            <li><i class="fa-solid fa-xmark"></i> <span data-lang="why_taxi_2">Лыжи и сноуборды везут в салоне: теснота, сырость и испорченная обивка</span></li>
+                            <li><i class="fa-solid fa-xmark"></i> <span data-lang="why_taxi_3">Торг на морозе, внезапные доплаты за багаж, лыжи и время ожидания</span></li>
+                            <li><i class="fa-solid fa-xmark"></i> <span data-lang="why_taxi_4">Случайные городские водители без опыта езды по сложным горным перевалам</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="why-card why-card-us">
+                        <div class="why-card-head">
+                            <div class="why-card-icon"><i class="fa-solid fa-snowflake"></i></div>
+                            <h3 data-lang="why_us_title">Karakol Ski Transfer (LC 100 4WD)</h3>
+                        </div>
+                        <ul class="why-list">
+                            <li><i class="fa-solid fa-check"></i> <span data-lang="why_us_1">Настоящие экспедиционные внедорожники 4WD с блокировками для любых метелей</span></li>
+                            <li><i class="fa-solid fa-check"></i> <span data-lang="why_us_2">Огромный закрытый автобокс 850 л на крыше — снаряжение сухое, салон просторный</span></li>
+                            <li><i class="fa-solid fa-check"></i> <span data-lang="why_us_3">Прозрачные фиксированные тарифы без доплат, оплата водителю по факту</span></li>
+                            <li><i class="fa-solid fa-check"></i> <span data-lang="why_us_4">Опытные горные водители с 10+ лет стажа на зимних дорогах Тянь-Шаня</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -651,7 +1095,7 @@
                         </li>
                     </ol>
                     <div class="how-visual">
-                        <img src="img/snow-forest.jpg" alt="Зимний лес в снегу">
+                        <img src="img/snow-forest.jpg" alt="Зимний лес в снегу" loading="lazy">
                         <div class="how-note"><i class="fa-solid fa-snowflake"></i> <span data-lang="how_note">Лыжи, сноуборды и багаж аккуратно размещаются в закрытом автобоксе на крыше.</span></div>
                     </div>
                 </div>
@@ -662,6 +1106,7 @@
             <div class="container">
                 <div class="booking-card">
                     <div class="booking-side">
+                        <span class="eyebrow"><i class="fa-brands fa-whatsapp"></i> WhatsApp Booking</span>
                         <h2 data-lang="book_title">Заказать трансфер</h2>
                         <p data-lang="book_subtitle">Заполните параметры поездки — откроется чат WhatsApp с уже сформированным сообщением.</p>
                         <ul class="mini-list">
@@ -669,7 +1114,12 @@
                             <li><i class="fa-solid fa-clock"></i> <span data-lang="loc1_feat2">Ожидание по договорённости</span></li>
                             <li><i class="fa-solid fa-users"></i> <span data-lang="loc1_feat3">До 6 пассажиров</span></li>
                         </ul>
+                        <div class="whatsapp-preview-box">
+                            <div class="wp-box-head"><i class="fa-brands fa-whatsapp"></i> <span data-lang="calc_msg_preview">Предпросмотр сообщения</span></div>
+                            <div class="wp-box-text" id="wpPreviewText">Karakol Ski Transfer...</div>
+                        </div>
                     </div>
+
                     <form class="booking-form" id="bookingForm" novalidate>
                         <div class="field">
                             <label for="dateInput" data-lang="form_date">Дата поездки</label>
@@ -683,10 +1133,6 @@
                             <label for="paxInput" data-lang="form_passengers">Количество пассажиров</label>
                             <input type="number" id="paxInput" min="1" max="6" value="2" required>
                         </div>
-                        <div class="field full">
-                            <label for="pickupInput" data-lang="form_pickup">Адрес подачи автомобиля</label>
-                            <input type="text" id="pickupInput" data-lang="form_pickup_ph" placeholder="Отель или точный адрес в Караколе" required>
-                        </div>
                         <div class="field">
                             <label for="destSelect" data-lang="form_dest">Направление</label>
                             <select id="destSelect" required>
@@ -695,7 +1141,11 @@
                                 <option value="alatoo" data-lang="dest2">Ala-Too Resort</option>
                             </select>
                         </div>
-                        <div class="field">
+                        <div class="field full">
+                            <label for="pickupInput" data-lang="form_pickup">Адрес подачи автомобиля</label>
+                            <input type="text" id="pickupInput" data-lang="form_pickup_ph" placeholder="Отель или точный адрес в Караколе" required>
+                        </div>
+                        <div class="field full">
                             <label for="typeSelect" data-lang="form_type">Тип трансфера</label>
                             <select id="typeSelect" required>
                                 <option value="private_one" data-lang="type_private_one">Индивидуальный — в одну сторону</option>
@@ -707,9 +1157,61 @@
                             <span class="e-label" data-lang="form_estimate">Предварительная стоимость</span>
                             <span class="e-val" id="estimateVal">—</span>
                         </div>
-                        <button type="submit" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> <span data-lang="form_submit">Отправить в WhatsApp</span></button>
+                        <button type="submit" class="btn btn-emerald"><i class="fa-brands fa-whatsapp"></i> <span data-lang="form_submit">Отправить в WhatsApp</span></button>
                         <p class="form-hint" data-lang="form_hint">Итоговую стоимость и детали поездки подтвердим в диалоге.</p>
                     </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow"><i class="fa-solid fa-circle-question"></i> <span data-lang="faq_title">Частые вопросы</span></span>
+                    <h2 data-lang="faq_title">Частые вопросы</h2>
+                    <p data-lang="faq_subtitle">Всё, что нужно знать перед бронированием поездки на склоны</p>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item open">
+                        <button type="button" class="faq-question">
+                            <span data-lang="faq_q1">Поместятся ли все наши лыжи, сноуборды и чехлы?</span>
+                            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-lang="faq_a1">Да, абсолютно! На крыше каждого нашего Land Cruiser 100 установлен экспедиционный автобокс объёмом 850 литров. В него свободно помещаются до 6 пар лыж любой ростовки, широкие сноуборды, ботинки и чехлы. В салоне остаётся просторно и тепло.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question">
+                            <span data-lang="faq_q2">Нужна ли предоплата при бронировании?</span>
+                            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-lang="faq_a2">Никакой предоплаты не требуется! Вы заказываете трансфер в WhatsApp, согласуем детали, а расчёт происходит напрямую с водителем на месте — наличными в сомах (KGS) или переводом.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question">
+                            <span data-lang="faq_q3">Где и как нас забирает автомобиль?</span>
+                            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-lang="faq_a3">Водитель подаёт автомобиль точно к согласованному времени прямо ко входу вашего отеля, коттеджа или гостевого дома в Караколе. Водитель поможет аккуратно погрузить лыжи и багаж в автобокс.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question">
+                            <span data-lang="faq_q4">Что делать, если рейс задержали или изменились планы?</span>
+                            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p data-lang="faq_a4">Просто предупредите нас в WhatsApp или Telegram как можно раньше. Мы без штрафов и доплат перенесём трансфер на нужное вам время или день.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -743,13 +1245,21 @@
                     <div class="quick-card">
                         <h3 data-lang="contact_quick_header">Быстрая связь</h3>
                         <p data-lang="contact_quick_desc">Напишите нам в WhatsApp или Telegram — подскажем свободные автомобили и подтвердим вашу поездку.</p>
-                        <a href="https://wa.me/996558130031" target="_blank" rel="noopener" class="btn btn-light"><i class="fa-brands fa-whatsapp"></i> <span data-lang="contact_whatsapp_btn">Написать в WhatsApp</span></a>
+                        <a href="https://wa.me/996558130031" target="_blank" rel="noopener" class="btn btn-emerald"><i class="fa-brands fa-whatsapp"></i> <span data-lang="contact_whatsapp_btn">Написать в WhatsApp</span></a>
                         <a href="https://t.me/+996558130031" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fa-brands fa-telegram"></i> <span data-lang="contact_telegram_btn">Написать в Telegram</span></a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Floating Mobile Bottom Bar -->
+    <div class="mobile-bottom-bar" id="mobileBottomBar">
+        <div class="mobile-bottom-bar-inner">
+            <a href="https://wa.me/996558130031" target="_blank" rel="noopener" class="mob-btn mob-btn-wa"><i class="fa-brands fa-whatsapp"></i> <span>WhatsApp</span></a>
+            <a href="#booking" class="mob-btn mob-btn-book"><i class="fa-solid fa-snowflake"></i> <span data-lang="mob_bar_book">Заказать в WhatsApp</span></a>
+        </div>
+    </div>
 
     <footer>
         <div class="container footer-inner">
@@ -866,7 +1376,43 @@
         "contact_quick_desc": "Напишите нам в WhatsApp или Telegram — подскажем свободные автомобили и подтвердим вашу поездку.",
         "contact_whatsapp_btn": "Написать в WhatsApp",
         "contact_telegram_btn": "Написать в Telegram",
-        "footer_rights": "© 2026 Karakol Ski Transfer. Все права защищены."
+        "footer_rights": "© 2026 Karakol Ski Transfer. Все права защищены.",
+        "hero_telemetry": "Каракол: -4°C · Снег 155 см · Дорога открыта 4WD",
+        "hero_badge_live": "Зимний сезон 2026/2027 · Трансферы ежедневно",
+        "hero_stat3_v": "850 л",
+        "hero_stat3_l": "вместимость автобокса",
+        "hero_stat4_v": "0 сом",
+        "hero_stat4_l": "предоплата не требуется",
+        "why_title": "Почему выбирают наш трансфер",
+        "why_subtitle": "Безопасность на горном серпантине, комфорт внедорожника и честные фиксированные цены",
+        "why_taxi_title": "Обычное городское такси",
+        "why_us_title": "Karakol Ski Transfer (LC 100 4WD)",
+        "why_taxi_1": "Легковые авто без полного привода, риск застрять на обледенелом серпантине",
+        "why_us_1": "Настоящие экспедиционные внедорожники 4WD с блокировками для любых метелей",
+        "why_taxi_2": "Лыжи и сноуборды везут в салоне: теснота, сырость и испорченная обивка",
+        "why_us_2": "Огромный закрытый автобокс 850 л на крыше — снаряжение сухое, салон просторный",
+        "why_taxi_3": "Торг на морозе, внезапные доплаты за багаж, лыжи и время ожидания",
+        "why_us_3": "Прозрачные фиксированные тарифы без доплат, оплата водителю по факту",
+        "why_taxi_4": "Случайные городские водители без опыта езды по сложным горным перевалам",
+        "why_us_4": "Опытные горные водители с 10+ лет стажа на зимних дорогах Тянь-Шаня",
+        "faq_title": "Частые вопросы",
+        "faq_subtitle": "Всё, что нужно знать перед бронированием поездки на склоны",
+        "faq_q1": "Поместятся ли все наши лыжи, сноуборды и чехлы?",
+        "faq_a1": "Да, абсолютно! На крыше каждого нашего Land Cruiser 100 установлен экспедиционный автобокс объёмом 850 литров. В него свободно помещаются до 6 пар лыж любой ростовки, широкие сноуборды, ботинки и чехлы. В салоне остаётся просторно и тепло.",
+        "faq_q2": "Нужна ли предоплата при бронировании?",
+        "faq_a2": "Никакой предоплаты не требуется! Вы заказываете трансфер в WhatsApp, согласуем детали, а расчёт происходит напрямую с водителем на месте — наличными в сомах (KGS) или переводом.",
+        "faq_q3": "Где и как нас забирает автомобиль?",
+        "faq_a3": "Водитель подаёт автомобиль точно к согласованному времени прямо ко входу вашего отеля, коттеджа или гостевого дома в Караколе. Водитель поможет аккуратно погрузить лыжи и багаж в автобокс.",
+        "faq_q4": "Что делать, если рейс задержали или изменились планы?",
+        "faq_a4": "Просто предупредите нас в WhatsApp или Telegram как можно раньше. Мы без штрафов и доплат перенесём трансфер на нужное вам время или день.",
+        "car_feat1": "Полный привод 4WD",
+        "car_feat2": "Автобокс 850 л",
+        "car_feat3": "2-зонный климат",
+        "car_feat4": "USB / Type-C зарядки",
+        "car_btn_view1": "Чёрный LC 100",
+        "car_btn_view2": "Серый LC 100",
+        "mob_bar_book": "Заказать в WhatsApp",
+        "calc_msg_preview": "Предпросмотр сообщения"
     },
     "en": {
         "page_title": "Karakol Ski Transfer — ski resort transfers in Karakol",
@@ -969,7 +1515,43 @@
         "contact_quick_desc": "Drop us a message on WhatsApp or Telegram — we'll check availability and confirm your ride.",
         "contact_whatsapp_btn": "Message on WhatsApp",
         "contact_telegram_btn": "Message on Telegram",
-        "footer_rights": "© 2026 Karakol Ski Transfer. All rights reserved."
+        "footer_rights": "© 2026 Karakol Ski Transfer. All rights reserved.",
+        "hero_telemetry": "Karakol: -4°C · Snow base 155 cm · Road open for 4WD",
+        "hero_badge_live": "Winter Season 2026/2027 · Daily Transfers",
+        "hero_stat3_v": "850 L",
+        "hero_stat3_l": "roof box capacity",
+        "hero_stat4_v": "0 KGS",
+        "hero_stat4_l": "no prepayment needed",
+        "why_title": "Why Choose Our Ski Transfer",
+        "why_subtitle": "Safety on icy mountain switchbacks, SUV comfort and transparent fixed pricing",
+        "why_taxi_title": "Regular City Taxi",
+        "why_us_title": "Karakol Ski Transfer (LC 100 4WD)",
+        "why_taxi_1": "2WD city sedans, high risk of getting stuck on icy steep mountain passes",
+        "why_us_1": "Full-time 4WD expedition SUVs with diff locks built for heavy alpine snowstorms",
+        "why_taxi_2": "Skis & boards squeezed into passenger cabin: cramped, cold and wet",
+        "why_us_2": "Massive 850 L aerodynamic roof box — gear stays dry, cabin stays spacious & warm",
+        "why_taxi_3": "Bargaining in freezing weather, unexpected baggage and waiting surcharges",
+        "why_us_3": "Fixed transparent rates agreed in advance, pay your driver directly upon arrival",
+        "why_taxi_4": "Random drivers without experience on high-altitude winter mountain roads",
+        "why_us_4": "Local mountain drivers with 10+ years experience navigating Tian Shan winter passes",
+        "faq_title": "Frequently Asked Questions",
+        "faq_subtitle": "Everything you need to know before booking your ride to the slopes",
+        "faq_q1": "Will all our skis, snowboards and gear fit?",
+        "faq_a1": "Yes, absolutely! Each Land Cruiser 100 is fitted with an expedition-grade 850-liter roof box. It easily holds up to 6 pairs of skis, wide snowboards, boots and bags, keeping the heated passenger cabin spacious and clutter-free.",
+        "faq_q2": "Is a deposit or prepayment required?",
+        "faq_a2": "No prepayment required at all! You book your transfer in WhatsApp, we confirm the details, and you pay the driver directly on site — cash in KGS or mobile bank transfer.",
+        "faq_q3": "Where and how does the driver pick us up?",
+        "faq_a3": "Your driver pulls up directly to the door of your hotel, chalet or guesthouse in Karakol right on schedule, and helps carefully load your ski gear into the roof box.",
+        "faq_q4": "What if our flight is delayed or plans change?",
+        "faq_a4": "Just message us on WhatsApp or Telegram as early as possible. We will reschedule your transfer time or date to your preferred slot free of charge.",
+        "car_feat1": "Full-Time 4WD",
+        "car_feat2": "850 L Roof Box",
+        "car_feat3": "Dual-Zone Climate",
+        "car_feat4": "USB / Type-C Charging",
+        "car_btn_view1": "Black LC 100",
+        "car_btn_view2": "Grey LC 100",
+        "mob_bar_book": "Book via WhatsApp",
+        "calc_msg_preview": "Message Preview"
     }
 };
         /*__I18N_END__*/
@@ -1006,9 +1588,6 @@
                 const langBtnText = document.getElementById('langBtnText');
                 if (langBtnText) {
                     langBtnText.textContent = currentLang === 'ru' ? 'EN' : 'RU';
-                } else {
-                    const langBtn = document.getElementById('langBtn');
-                    if (langBtn) langBtn.textContent = currentLang === 'ru' ? 'EN' : 'RU';
                 }
 
                 try { localStorage.setItem('kst-lang', currentLang); } catch (e) {}
@@ -1020,6 +1599,7 @@
                 const typeSel = document.getElementById('typeSelect');
                 const paxInput = document.getElementById('paxInput');
                 const out = document.getElementById('estimateVal');
+                const wpPreview = document.getElementById('wpPreviewText');
                 if (!destSel || !typeSel || !out) return;
 
                 const dest = destSel.value;
@@ -1030,7 +1610,11 @@
                 if (isNaN(pax) || pax < 1) pax = 1;
                 if (pax > 6) pax = 6;
 
-                if (!dest) { out.textContent = '—'; return; }
+                if (!dest) {
+                    out.textContent = '—';
+                    if (wpPreview) wpPreview.textContent = (dict.page_title || 'Karakol Ski Transfer') + '\n...';
+                    return;
+                }
 
                 const p = prices[dest];
                 let total = 0;
@@ -1050,30 +1634,102 @@
                 }
 
                 out.textContent = fmt(total) + ' KGS' + suffix;
+                if (wpPreview) wpPreview.textContent = buildMessage();
             }
 
             function buildMessage() {
                 const dict = translations[currentLang] || { ru: {}, en: {} };
-                const d = document.getElementById('dateInput').value;
-                const t = document.getElementById('timeInput').value;
-                const pickup = document.getElementById('pickupInput').value.trim();
+                const d = document.getElementById('dateInput').value || '—';
+                const t = document.getElementById('timeInput').value || '—';
+                const pickup = document.getElementById('pickupInput').value.trim() || '—';
                 const destSel = document.getElementById('destSelect');
                 const typeSel = document.getElementById('typeSelect');
-                const pax = document.getElementById('paxInput').value;
+                const pax = document.getElementById('paxInput').value || '1';
                 const destText = destSel.options[destSel.selectedIndex] ? destSel.options[destSel.selectedIndex].textContent : '';
                 const typeText = typeSel.options[typeSel.selectedIndex] ? typeSel.options[typeSel.selectedIndex].textContent : '';
                 const estimate = document.getElementById('estimateVal').textContent;
 
                 return [
-                    dict.page_title || 'Karakol Ski Transfer',
+                    '❄️ ' + (dict.page_title || 'Karakol Ski Transfer'),
                     '',
-                    (dict.form_date || 'Date') + ': ' + d + ' ' + t,
-                    (dict.form_pickup || 'Pickup') + ': ' + pickup,
-                    (dict.form_dest || 'Resort') + ': ' + destText,
-                    (dict.form_passengers || 'Passengers') + ': ' + pax,
-                    (dict.form_type || 'Type') + ': ' + typeText,
-                    (dict.form_estimate || 'Estimate') + ': ' + estimate
+                    '📅 ' + (dict.form_date || 'Дата') + ': ' + d + ' ' + t,
+                    '📍 ' + (dict.form_pickup || 'Адрес подачи') + ': ' + pickup,
+                    '🏔️ ' + (dict.form_dest || 'Направление') + ': ' + destText,
+                    '👥 ' + (dict.form_passengers || 'Пассажиров') + ': ' + pax,
+                    '🚖 ' + (dict.form_type || 'Тип трансфера') + ': ' + typeText,
+                    '💰 ' + (dict.form_estimate || 'Предварительная стоимость') + ': ' + estimate
                 ].join('\n');
+            }
+
+            // Snow animation canvas
+            function initSnow() {
+                const canvas = document.getElementById('snowCanvas');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+                let width = canvas.width = canvas.offsetWidth;
+                let height = canvas.height = canvas.offsetHeight;
+                let isPaused = false;
+
+                const flakes = [];
+                const count = Math.min(Math.floor(width / 18), 65);
+
+                for (let i = 0; i < count; i++) {
+                    flakes.push({
+                        x: Math.random() * width,
+                        y: Math.random() * height,
+                        r: Math.random() * 2.2 + 0.8,
+                        speed: Math.random() * 0.8 + 0.4,
+                        wind: (Math.random() - 0.5) * 0.4,
+                        opacity: Math.random() * 0.6 + 0.3
+                    });
+                }
+
+                function draw() {
+                    if (isPaused) return;
+                    ctx.clearRect(0, 0, width, height);
+
+                    for (let i = 0; i < flakes.length; i++) {
+                        const f = flakes[i];
+                        ctx.beginPath();
+                        ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+                        ctx.fillStyle = 'rgba(255, 255, 255, ' + f.opacity + ')';
+                        ctx.fill();
+
+                        f.y += f.speed;
+                        f.x += f.wind;
+
+                        if (f.y > height) {
+                            f.y = -5;
+                            f.x = Math.random() * width;
+                        }
+                        if (f.x > width) f.x = 0;
+                        if (f.x < 0) f.x = width;
+                    }
+
+                    requestAnimationFrame(draw);
+                }
+
+                window.addEventListener('resize', function () {
+                    width = canvas.width = canvas.offsetWidth;
+                    height = canvas.height = canvas.offsetHeight;
+                });
+
+                // Pause canvas when user scrolls out of hero for top battery/cpu performance
+                const observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) {
+                            if (isPaused) {
+                                isPaused = false;
+                                requestAnimationFrame(draw);
+                            }
+                        } else {
+                            isPaused = true;
+                        }
+                    });
+                }, { threshold: 0.1 });
+                observer.observe(canvas);
+
+                requestAnimationFrame(draw);
             }
 
             document.addEventListener('DOMContentLoaded', function () {
@@ -1087,9 +1743,9 @@
                     lang = (navigator.language || '').toLowerCase().indexOf('ru') === 0 ? 'ru' : 'en';
                 }
                 applyLang(lang);
+                initSnow();
 
                 const langBtn = document.getElementById('langBtn');
-                const langBtnText = document.getElementById('langBtnText');
                 if (langBtn) {
                     langBtn.addEventListener('click', function () {
                         applyLang(currentLang === 'ru' ? 'en' : 'ru');
@@ -1145,14 +1801,14 @@
                     });
                 }
 
-                // Scrollspy: highlight active nav link on scroll
-                const sections = ['locations', 'cars', 'prices', 'how', 'contacts'].map(function (id) {
+                // Scrollspy
+                const sections = ['locations', 'cars', 'prices', 'how', 'faq', 'contacts'].map(function (id) {
                     return document.getElementById(id);
                 }).filter(Boolean);
                 const navItems = document.querySelectorAll('.nav-links a:not(.nav-mobile-cta)');
 
                 function updateActiveNav() {
-                    const scrollY = window.scrollY + 120;
+                    const scrollY = window.scrollY + 140;
                     let currentId = '';
                     sections.forEach(function (sec) {
                         const top = sec.offsetTop;
@@ -1175,18 +1831,13 @@
 
                 const header = document.getElementById('siteHeader');
                 const onScroll = function () {
-                    if (window.scrollY > 12) header.classList.add('scrolled');
+                    if (window.scrollY > 16) header.classList.add('scrolled');
                     else header.classList.remove('scrolled');
                 };
                 window.addEventListener('scroll', onScroll, { passive: true });
                 onScroll();
 
-                ['destSelect', 'typeSelect', 'paxInput'].forEach(function (id) {
-                    const el = document.getElementById(id);
-                    if (el) el.addEventListener('input', updateEstimate);
-                    if (el) el.addEventListener('change', updateEstimate);
-                });
-
+                // Interactive Destination Select from cards
                 document.querySelectorAll('a[data-dest]').forEach(function (a) {
                     a.addEventListener('click', function () {
                         const dest = a.getAttribute('data-dest');
@@ -1199,6 +1850,29 @@
                             }, 350);
                         }
                     });
+                });
+
+                // FAQ Accordion
+                document.querySelectorAll('.faq-question').forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        const item = btn.closest('.faq-item');
+                        const isOpen = item.classList.contains('open');
+                        document.querySelectorAll('.faq-item').forEach(function (it) {
+                            it.classList.remove('open');
+                        });
+                        if (!isOpen) {
+                            item.classList.add('open');
+                        }
+                    });
+                });
+
+                // Reactive form inputs
+                ['destSelect', 'typeSelect', 'paxInput', 'dateInput', 'timeInput', 'pickupInput'].forEach(function (id) {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.addEventListener('input', updateEstimate);
+                        el.addEventListener('change', updateEstimate);
+                    }
                 });
 
                 const form = document.getElementById('bookingForm');
