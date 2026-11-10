@@ -32,27 +32,22 @@
             --ink: #07172c;
             --ink-2: #0f2c4f;
             --muted: #53708e;
-            --bg: #060f1d;
-            --bg-light: #f4f9fd;
+            --bg-dark: #050b14;
+            --bg-light: #f5f9fc;
             --surface: #ffffff;
-            --surface-glass: rgba(255, 255, 255, 0.88);
-            --surface-dark: #0b1a2f;
-            --surface-dark-glass: rgba(11, 26, 47, 0.75);
-            --line: rgba(10, 35, 66, 0.1);
-            --line-glass: rgba(255, 255, 255, 0.15);
-            --ice: #bfe4ff;
-            --ice-soft: rgba(191, 228, 255, 0.15);
+            --line: rgba(7, 23, 44, 0.08);
+            --line-light: rgba(255, 255, 255, 0.14);
             --blue: #1f6fd6;
             --blue-d: #0b4aa2;
             --accent: #38bdf8;
             --accent-glow: rgba(56, 189, 248, 0.35);
             --emerald: #10b981;
-            --shadow: 0 20px 50px rgba(7, 23, 44, 0.12);
-            --shadow-lg: 0 25px 60px rgba(5, 15, 29, 0.25);
-            --shadow-sm: 0 8px 24px rgba(7, 23, 44, 0.08);
+            --shadow: 0 18px 48px rgba(7, 23, 44, 0.1);
+            --shadow-lg: 0 25px 65px rgba(5, 15, 29, 0.22);
+            --shadow-sm: 0 8px 24px rgba(7, 23, 44, 0.06);
             --radius-sm: 12px;
-            --radius: 20px;
-            --radius-lg: 28px;
+            --radius: 18px;
+            --radius-lg: 26px;
             --max: 1200px;
             --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             --font-head: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
@@ -136,7 +131,7 @@
 
         /* Top Bar Ticker */
         .top-ticker {
-            background: #040a14;
+            background: #040912;
             color: rgba(255, 255, 255, 0.85);
             font-size: 0.78rem;
             font-weight: 600;
@@ -175,15 +170,15 @@
         /* Header & Nav */
         header.site-header {
             position: fixed; inset: 0 0 auto 0; z-index: 50;
-            background: rgba(244, 249, 253, 0.88);
+            background: rgba(245, 249, 252, 0.88);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
             border-bottom: 1px solid transparent;
-            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, transform 0.25s ease;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
         }
         header.site-header.scrolled {
             border-color: var(--line);
-            background: rgba(244, 249, 253, 0.96);
+            background: rgba(245, 249, 252, 0.96);
             box-shadow: 0 8px 24px rgba(7, 23, 44, 0.08);
         }
         .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 18px; flex-wrap: nowrap; }
@@ -246,7 +241,7 @@
         /* Nav Overlay for Mobile */
         .nav-overlay {
             position: fixed; inset: 0; z-index: 45;
-            background: rgba(6, 15, 29, 0.55);
+            background: rgba(5, 11, 20, 0.6);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
             opacity: 0; visibility: hidden;
@@ -258,13 +253,13 @@
         .hero {
             position: relative; min-height: 96vh; display: flex; align-items: center;
             padding: 150px 0 100px; overflow: hidden;
-            background: #060f1d;
+            background: var(--bg-dark);
             color: #fff;
         }
         .hero-bg-media {
             position: absolute; inset: 0; z-index: 0;
             background:
-                linear-gradient(180deg, rgba(6, 15, 29, 0.5) 0%, rgba(6, 15, 29, 0.72) 60%, #060f1d 100%),
+                linear-gradient(180deg, rgba(5, 11, 20, 0.52) 0%, rgba(5, 11, 20, 0.76) 60%, var(--bg-dark) 100%),
                 radial-gradient(800px 500px at 80% 30%, rgba(56, 189, 248, 0.18), transparent 70%),
                 radial-gradient(900px 600px at 15% 40%, rgba(31, 111, 214, 0.28), transparent 70%),
                 url('img/hero.jpg') center/cover no-repeat;
@@ -274,7 +269,7 @@
             position: absolute; inset: 0; z-index: 1; pointer-events: none;
             width: 100%; height: 100%;
         }
-        .hero-inner { position: relative; z-index: 2; max-width: 820px; }
+        .hero-inner { position: relative; z-index: 2; max-width: 840px; }
         
         .hero-badge-wrap {
             display: inline-flex; align-items: center; gap: 10px;
@@ -293,11 +288,6 @@
             font-size: clamp(2.5rem, 6.2vw, 4.4rem); margin-bottom: 22px;
             text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
             letter-spacing: -0.03em;
-        }
-        .hero h1 span.gradient-text {
-            background: linear-gradient(135deg, #fff 40%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         .hero p.lead {
             font-size: clamp(1.08rem, 2.2vw, 1.26rem);
@@ -355,12 +345,12 @@
         .loc-card:hover .loc-media img { transform: scale(1.06); }
         .loc-media::after {
             content: ""; position: absolute; inset: 0;
-            background: linear-gradient(180deg, rgba(6, 15, 29, 0.05) 0%, rgba(6, 15, 29, 0.75) 100%);
+            background: linear-gradient(180deg, rgba(5, 11, 20, 0.05) 0%, rgba(5, 11, 20, 0.78) 100%);
         }
         .loc-badge-time {
             position: absolute; top: 18px; left: 18px; z-index: 2;
             display: inline-flex; align-items: center; gap: 7px;
-            background: rgba(6, 15, 29, 0.75); color: #fff;
+            background: rgba(5, 11, 20, 0.75); color: #fff;
             backdrop-filter: blur(8px); padding: 6px 13px; border-radius: 999px;
             font-size: 0.76rem; font-weight: 700; letter-spacing: 0.03em;
             border: 1px solid rgba(255, 255, 255, 0.18);
@@ -399,7 +389,7 @@
         }
         .loc-body .btn { margin-top: auto; width: 100%; }
 
-        /* Cars */
+        /* Fleet Section */
         .cars-section {
             background: linear-gradient(180deg, transparent, rgba(191, 228, 255, 0.35) 60%, transparent);
         }
@@ -454,19 +444,48 @@
         }
         .equip-pill i { color: var(--emerald); font-size: 0.7rem; }
 
+        /* Roofbox Highlight Banner */
+        .roofbox-banner {
+            margin-top: 40px; background: linear-gradient(145deg, #07192f, #0d2a4e);
+            border-radius: var(--radius-lg); padding: 36px 40px; color: #fff;
+            display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            box-shadow: var(--shadow);
+        }
+        .roofbox-banner-text h3 {
+            font-size: 1.45rem; margin-bottom: 10px; color: #fff;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .roofbox-banner-text h3 i { color: var(--accent); }
+        .roofbox-banner-text p {
+            color: rgba(255, 255, 255, 0.85); font-size: 0.98rem; line-height: 1.6; max-width: 780px;
+        }
+        .roofbox-badge-lg {
+            background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.35);
+            border-radius: 20px; padding: 20px 28px; text-align: center;
+        }
+        .roofbox-badge-lg b {
+            display: block; font-family: var(--font-head); font-size: 2.2rem;
+            color: var(--accent); line-height: 1; margin-bottom: 4px;
+        }
+        .roofbox-badge-lg span {
+            font-size: 0.78rem; text-transform: uppercase; font-weight: 700;
+            letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.75);
+        }
+
         /* Comparison Section (Why Us vs Taxi) */
         .why-section {
-            background: #060f1d; color: #fff;
+            background: var(--bg-dark); color: #fff;
             padding: 100px 0; position: relative; overflow: hidden;
         }
         .why-section .section-head h2 { color: #fff; }
         .why-section .section-head p { color: rgba(255, 255, 255, 0.75); }
         .why-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
-            max-width: 1000px; margin: 0 auto;
+            max-width: 1020px; margin: 0 auto;
         }
         .why-card {
-            border-radius: var(--radius-lg); padding: 36px 32px;
+            border-radius: var(--radius-lg); padding: 38px 34px;
             position: relative; overflow: hidden;
         }
         .why-card-taxi {
@@ -474,9 +493,9 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .why-card-us {
-            background: linear-gradient(145deg, rgba(31, 111, 214, 0.18), rgba(56, 189, 248, 0.08));
+            background: linear-gradient(145deg, rgba(31, 111, 214, 0.2), rgba(56, 189, 248, 0.08));
             border: 1px solid rgba(56, 189, 248, 0.35);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
         }
         .why-card-us::before {
             content: "РЕКОМЕНДУЕМ"; position: absolute; top: 16px; right: 16px;
@@ -487,7 +506,7 @@
             display: flex; align-items: center; gap: 14px; margin-bottom: 26px;
         }
         .why-card-icon {
-            width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center;
+            width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
             font-size: 1.25rem; flex-shrink: 0;
         }
         .why-card-taxi .why-card-icon { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
@@ -497,7 +516,7 @@
         .why-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
         .why-list li {
             display: flex; align-items: flex-start; gap: 13px; font-size: 0.94rem;
-            color: rgba(255, 255, 255, 0.86); line-height: 1.5;
+            color: rgba(255, 255, 255, 0.88); line-height: 1.5;
         }
         .why-list li i { margin-top: 4px; font-size: 0.85rem; flex-shrink: 0; }
         .why-card-taxi .why-list li i { color: #f87171; }
@@ -534,7 +553,7 @@
         .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 20px; }
         .step {
             display: flex; gap: 20px; background: var(--surface);
-            padding: 20px 22px; border-radius: var(--radius);
+            padding: 22px 24px; border-radius: var(--radius);
             border: 1px solid rgba(255, 255, 255, 0.8);
             box-shadow: var(--shadow-sm); transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -552,7 +571,7 @@
         .how-visual img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
         .how-note {
             position: absolute; left: 20px; right: 20px; bottom: 20px; display: flex; align-items: center; gap: 14px;
-            background: rgba(6, 15, 29, 0.82); backdrop-filter: blur(10px); color: #fff;
+            background: rgba(5, 11, 20, 0.82); backdrop-filter: blur(10px); color: #fff;
             border-radius: 16px; padding: 16px 20px; font-size: 0.92rem; font-weight: 600;
             border: 1px solid rgba(255, 255, 255, 0.15);
         }
@@ -584,8 +603,8 @@
             border-radius: 16px; padding: 18px 20px;
         }
         .wp-box-head {
-            display: flex; align-items: center; gap: 10px; font-weight: 700;
-            font-size: 0.85rem; color: #065f46; margin-bottom: 10px;
+            display: flex; align-items: center; justify-content: space-between;
+            font-weight: 700; font-size: 0.85rem; color: #065f46; margin-bottom: 10px;
         }
         .wp-box-text {
             font-family: monospace; font-size: 0.82rem; color: #047857;
@@ -630,38 +649,6 @@
         .booking-form .btn { grid-column: 1 / -1; padding: 16px; font-size: 1.05rem; }
         .form-hint { grid-column: 1 / -1; font-size: 0.8rem; color: var(--muted); text-align: center; margin-top: -4px; }
 
-        /* FAQ Section */
-        .faq-section { background: var(--bg-light); padding: 90px 0; }
-        .faq-list { max-width: 820px; margin: 0 auto; display: grid; gap: 14px; }
-        .faq-item {
-            background: var(--surface); border: 1px solid var(--line);
-            border-radius: var(--radius); overflow: hidden;
-            box-shadow: var(--shadow-sm); transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .faq-item.open {
-            border-color: rgba(31, 111, 214, 0.4);
-            box-shadow: var(--shadow);
-        }
-        .faq-question {
-            width: 100%; text-align: left; padding: 22px 26px; border: 0; background: transparent;
-            font-family: var(--font-head); font-size: 1.12rem; font-weight: 700; color: var(--ink);
-            display: flex; align-items: center; justify-content: space-between; gap: 16px;
-            cursor: pointer;
-        }
-        .faq-icon {
-            width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
-            background: rgba(31, 111, 214, 0.1); color: var(--blue); font-size: 0.9rem;
-            flex-shrink: 0; transition: transform 0.25s ease;
-        }
-        .faq-item.open .faq-icon { transform: rotate(180deg); background: var(--blue); color: #fff; }
-        .faq-answer {
-            max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease;
-            padding: 0 26px; color: var(--muted); font-size: 0.96rem; line-height: 1.65;
-        }
-        .faq-item.open .faq-answer {
-            max-height: 250px; padding: 0 26px 22px;
-        }
-
         /* Contacts */
         .contacts-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: stretch; }
         .contact-list { display: grid; gap: 14px; }
@@ -697,7 +684,7 @@
         /* Floating Mobile Sticky Action Bar */
         .mobile-bottom-bar {
             display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 46;
-            background: rgba(6, 15, 29, 0.94);
+            background: rgba(5, 11, 20, 0.94);
             backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
             padding: 12px 18px; border-top: 1px solid rgba(255, 255, 255, 0.14);
             box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.2);
@@ -720,6 +707,7 @@
             .nav-links a { font-size: 0.88rem; }
             .nav .btn { padding: 9px 15px; font-size: 0.86rem; }
             .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .roofbox-banner { grid-template-columns: 1fr; }
         }
         @media (max-width: 1000px) {
             .nav-links {
@@ -767,6 +755,7 @@
             .notes { grid-template-columns: 1fr; }
             .table-wrap { overflow-x: auto; }
             table.rates { min-width: 540px; }
+            .roofbox-banner { padding: 26px 20px; }
         }
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
@@ -799,9 +788,9 @@
             <nav class="nav-links" id="navLinks" aria-label="Main navigation">
                 <a href="#locations" data-lang="nav_locations">Направления</a>
                 <a href="#cars" data-lang="nav_cars">Автомобили</a>
+                <a href="#why" data-lang="why_title">Почему выбирают наш трансфер</a>
                 <a href="#prices" data-lang="nav_prices">Цены</a>
                 <a href="#how" data-lang="nav_how">Как это работает</a>
-                <a href="#faq" data-lang="faq_title">Частые вопросы</a>
                 <a href="#contacts" data-lang="nav_contacts">Контакты</a>
                 <a href="#booking" class="btn btn-primary nav-mobile-cta" data-lang="nav_book">Заказать трансфер</a>
             </nav>
@@ -862,7 +851,7 @@
                 <div class="locations-grid">
                     <article class="loc-card">
                         <div class="loc-media">
-                            <span class="loc-badge-time"><i class="fa-solid fa-clock"></i> ~35 мин · 2 300 - 3 040 м</span>
+                            <span class="loc-badge-time"><i class="fa-solid fa-clock"></i> <span data-lang="route_karakol_stat">18 км · ~35 мин · 2 300 - 3 040 м</span></span>
                             <img src="img/location-karakol.jpg" alt="Karakol Ski Resort и Kapriz" loading="lazy">
                             <div class="loc-name" data-lang="loc1_name">Karakol Ski Resort &amp; Kapriz</div>
                         </div>
@@ -896,7 +885,7 @@
 
                     <article class="loc-card">
                         <div class="loc-media">
-                            <span class="loc-badge-time"><i class="fa-solid fa-clock"></i> ~50 мин · Фрирайд зона</span>
+                            <span class="loc-badge-time"><i class="fa-solid fa-clock"></i> <span data-lang="route_alatoo_stat">32 км · ~50 мин · Фрирайд зона</span></span>
                             <img src="img/location-alatoo.jpg" alt="Ala-Too Resort" loading="lazy">
                             <div class="loc-name" data-lang="loc2_name">Ala-Too Resort</div>
                         </div>
@@ -989,11 +978,23 @@
                         </div>
                     </article>
                 </div>
+
+                <!-- Roofbox Highlight Banner -->
+                <div class="roofbox-banner">
+                    <div class="roofbox-banner-text">
+                        <h3><i class="fa-solid fa-box-archive"></i> <span data-lang="roofbox_highlight_t">Экспедиционный автобокс 850 л на каждом авто</span></h3>
+                        <p data-lang="roofbox_highlight_d">Никаких лыж на коленях или в салоне: до 6 комплектов горных лыж, широкие сноуборды и чехлы размещаются на крыше в сухом закрытом боксе. В салоне — максимум пространства и тепла.</p>
+                    </div>
+                    <div class="roofbox-badge-lg">
+                        <b>850 L</b>
+                        <span>Roof Capacity</span>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Why Us vs Taxi Section -->
-        <section class="why-section">
+        <section id="why" class="why-section">
             <div class="container">
                 <div class="section-head">
                     <span class="eyebrow" style="background:rgba(56,189,248,0.15); color:var(--accent);"><i class="fa-solid fa-shield-halved"></i> <span data-lang="why_title">Почему выбирают наш трансфер</span></span>
@@ -1115,7 +1116,10 @@
                             <li><i class="fa-solid fa-users"></i> <span data-lang="loc1_feat3">До 6 пассажиров</span></li>
                         </ul>
                         <div class="whatsapp-preview-box">
-                            <div class="wp-box-head"><i class="fa-brands fa-whatsapp"></i> <span data-lang="calc_msg_preview">Предпросмотр сообщения</span></div>
+                            <div class="wp-box-head">
+                                <span><i class="fa-brands fa-whatsapp"></i> <span data-lang="calc_msg_preview">Предпросмотр сообщения</span></span>
+                                <button type="button" id="copyMsgBtn" style="background:transparent; border:0; color:#047857; font-weight:700; cursor:pointer; font-size:0.75rem;"><i class="fa-regular fa-copy"></i> <span data-lang="calc_copy_btn">Скопировать</span></button>
+                            </div>
                             <div class="wp-box-text" id="wpPreviewText">Karakol Ski Transfer...</div>
                         </div>
                     </div>
@@ -1160,58 +1164,6 @@
                         <button type="submit" class="btn btn-emerald"><i class="fa-brands fa-whatsapp"></i> <span data-lang="form_submit">Отправить в WhatsApp</span></button>
                         <p class="form-hint" data-lang="form_hint">Итоговую стоимость и детали поездки подтвердим в диалоге.</p>
                     </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section id="faq" class="faq-section">
-            <div class="container">
-                <div class="section-head">
-                    <span class="eyebrow"><i class="fa-solid fa-circle-question"></i> <span data-lang="faq_title">Частые вопросы</span></span>
-                    <h2 data-lang="faq_title">Частые вопросы</h2>
-                    <p data-lang="faq_subtitle">Всё, что нужно знать перед бронированием поездки на склоны</p>
-                </div>
-                <div class="faq-list">
-                    <div class="faq-item open">
-                        <button type="button" class="faq-question">
-                            <span data-lang="faq_q1">Поместятся ли все наши лыжи, сноуборды и чехлы?</span>
-                            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
-                        </button>
-                        <div class="faq-answer">
-                            <p data-lang="faq_a1">Да, абсолютно! На крыше каждого нашего Land Cruiser 100 установлен экспедиционный автобокс объёмом 850 литров. В него свободно помещаются до 6 пар лыж любой ростовки, широкие сноуборды, ботинки и чехлы. В салоне остаётся просторно и тепло.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button type="button" class="faq-question">
-                            <span data-lang="faq_q2">Нужна ли предоплата при бронировании?</span>
-                            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
-                        </button>
-                        <div class="faq-answer">
-                            <p data-lang="faq_a2">Никакой предоплаты не требуется! Вы заказываете трансфер в WhatsApp, согласуем детали, а расчёт происходит напрямую с водителем на месте — наличными в сомах (KGS) или переводом.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button type="button" class="faq-question">
-                            <span data-lang="faq_q3">Где и как нас забирает автомобиль?</span>
-                            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
-                        </button>
-                        <div class="faq-answer">
-                            <p data-lang="faq_a3">Водитель подаёт автомобиль точно к согласованному времени прямо ко входу вашего отеля, коттеджа или гостевого дома в Караколе. Водитель поможет аккуратно погрузить лыжи и багаж в автобокс.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button type="button" class="faq-question">
-                            <span data-lang="faq_q4">Что делать, если рейс задержали или изменились планы?</span>
-                            <span class="faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
-                        </button>
-                        <div class="faq-answer">
-                            <p data-lang="faq_a4">Просто предупредите нас в WhatsApp или Telegram как можно раньше. Мы без штрафов и доплат перенесём трансфер на нужное вам время или день.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1395,16 +1347,6 @@
         "why_us_3": "Прозрачные фиксированные тарифы без доплат, оплата водителю по факту",
         "why_taxi_4": "Случайные городские водители без опыта езды по сложным горным перевалам",
         "why_us_4": "Опытные горные водители с 10+ лет стажа на зимних дорогах Тянь-Шаня",
-        "faq_title": "Частые вопросы",
-        "faq_subtitle": "Всё, что нужно знать перед бронированием поездки на склоны",
-        "faq_q1": "Поместятся ли все наши лыжи, сноуборды и чехлы?",
-        "faq_a1": "Да, абсолютно! На крыше каждого нашего Land Cruiser 100 установлен экспедиционный автобокс объёмом 850 литров. В него свободно помещаются до 6 пар лыж любой ростовки, широкие сноуборды, ботинки и чехлы. В салоне остаётся просторно и тепло.",
-        "faq_q2": "Нужна ли предоплата при бронировании?",
-        "faq_a2": "Никакой предоплаты не требуется! Вы заказываете трансфер в WhatsApp, согласуем детали, а расчёт происходит напрямую с водителем на месте — наличными в сомах (KGS) или переводом.",
-        "faq_q3": "Где и как нас забирает автомобиль?",
-        "faq_a3": "Водитель подаёт автомобиль точно к согласованному времени прямо ко входу вашего отеля, коттеджа или гостевого дома в Караколе. Водитель поможет аккуратно погрузить лыжи и багаж в автобокс.",
-        "faq_q4": "Что делать, если рейс задержали или изменились планы?",
-        "faq_a4": "Просто предупредите нас в WhatsApp или Telegram как можно раньше. Мы без штрафов и доплат перенесём трансфер на нужное вам время или день.",
         "car_feat1": "Полный привод 4WD",
         "car_feat2": "Автобокс 850 л",
         "car_feat3": "2-зонный климат",
@@ -1412,7 +1354,17 @@
         "car_btn_view1": "Чёрный LC 100",
         "car_btn_view2": "Серый LC 100",
         "mob_bar_book": "Заказать в WhatsApp",
-        "calc_msg_preview": "Предпросмотр сообщения"
+        "calc_msg_preview": "Предпросмотр сообщения",
+        "hero_eyebrow": "Экспедиционный трансфер на склоны Тянь-Шаня",
+        "fleet_tag": "Флот внедорожников",
+        "route_karakol_stat": "18 км · ~35 мин · 2 300 - 3 040 м",
+        "route_alatoo_stat": "32 км · ~50 мин · Фрирайд зона",
+        "roofbox_highlight_t": "Экспедиционный автобокс 850 л на каждом авто",
+        "roofbox_highlight_d": "Никаких лыж на коленях или в салоне: до 6 комплектов горных лыж, широкие сноуборды и чехлы размещаются на крыше в сухом закрытом боксе. В салоне — максимум пространства и тепла.",
+        "calc_step1": "1. Курорт",
+        "calc_step2": "2. Формат поездки",
+        "calc_step3": "3. Дата и подача",
+        "calc_copy_btn": "Скопировать текст заявки"
     },
     "en": {
         "page_title": "Karakol Ski Transfer — ski resort transfers in Karakol",
@@ -1534,16 +1486,6 @@
         "why_us_3": "Fixed transparent rates agreed in advance, pay your driver directly upon arrival",
         "why_taxi_4": "Random drivers without experience on high-altitude winter mountain roads",
         "why_us_4": "Local mountain drivers with 10+ years experience navigating Tian Shan winter passes",
-        "faq_title": "Frequently Asked Questions",
-        "faq_subtitle": "Everything you need to know before booking your ride to the slopes",
-        "faq_q1": "Will all our skis, snowboards and gear fit?",
-        "faq_a1": "Yes, absolutely! Each Land Cruiser 100 is fitted with an expedition-grade 850-liter roof box. It easily holds up to 6 pairs of skis, wide snowboards, boots and bags, keeping the heated passenger cabin spacious and clutter-free.",
-        "faq_q2": "Is a deposit or prepayment required?",
-        "faq_a2": "No prepayment required at all! You book your transfer in WhatsApp, we confirm the details, and you pay the driver directly on site — cash in KGS or mobile bank transfer.",
-        "faq_q3": "Where and how does the driver pick us up?",
-        "faq_a3": "Your driver pulls up directly to the door of your hotel, chalet or guesthouse in Karakol right on schedule, and helps carefully load your ski gear into the roof box.",
-        "faq_q4": "What if our flight is delayed or plans change?",
-        "faq_a4": "Just message us on WhatsApp or Telegram as early as possible. We will reschedule your transfer time or date to your preferred slot free of charge.",
         "car_feat1": "Full-Time 4WD",
         "car_feat2": "850 L Roof Box",
         "car_feat3": "Dual-Zone Climate",
@@ -1551,7 +1493,17 @@
         "car_btn_view1": "Black LC 100",
         "car_btn_view2": "Grey LC 100",
         "mob_bar_book": "Book via WhatsApp",
-        "calc_msg_preview": "Message Preview"
+        "calc_msg_preview": "Message Preview",
+        "hero_eyebrow": "Expedition Ski Transfers to Tian Shan Slopes",
+        "fleet_tag": "Expedition Fleet",
+        "route_karakol_stat": "18 km · ~35 min · 2,300 - 3,040 m",
+        "route_alatoo_stat": "32 km · ~50 min · Freeride Zone",
+        "roofbox_highlight_t": "Expedition 850 L Roof Box on Every Vehicle",
+        "roofbox_highlight_d": "Zero skis inside the cabin: up to 6 sets of skis, wide snowboards and boot bags travel safely in the enclosed aerodynamic roof box. The heated passenger cabin stays warm and spacious.",
+        "calc_step1": "1. Destination",
+        "calc_step2": "2. Transfer Type",
+        "calc_step3": "3. Date & Pickup",
+        "calc_copy_btn": "Copy Message Text"
     }
 };
         /*__I18N_END__*/
@@ -1714,7 +1666,6 @@
                     height = canvas.height = canvas.offsetHeight;
                 });
 
-                // Pause canvas when user scrolls out of hero for top battery/cpu performance
                 const observer = new IntersectionObserver(function (entries) {
                     entries.forEach(function (e) {
                         if (e.isIntersecting) {
@@ -1802,7 +1753,7 @@
                 }
 
                 // Scrollspy
-                const sections = ['locations', 'cars', 'prices', 'how', 'faq', 'contacts'].map(function (id) {
+                const sections = ['locations', 'cars', 'why', 'prices', 'how', 'contacts'].map(function (id) {
                     return document.getElementById(id);
                 }).filter(Boolean);
                 const navItems = document.querySelectorAll('.nav-links a:not(.nav-mobile-cta)');
@@ -1852,19 +1803,20 @@
                     });
                 });
 
-                // FAQ Accordion
-                document.querySelectorAll('.faq-question').forEach(function (btn) {
-                    btn.addEventListener('click', function () {
-                        const item = btn.closest('.faq-item');
-                        const isOpen = item.classList.contains('open');
-                        document.querySelectorAll('.faq-item').forEach(function (it) {
-                            it.classList.remove('open');
-                        });
-                        if (!isOpen) {
-                            item.classList.add('open');
+                // Copy Message Button
+                const copyBtn = document.getElementById('copyMsgBtn');
+                if (copyBtn) {
+                    copyBtn.addEventListener('click', function () {
+                        const msg = buildMessage();
+                        if (navigator.clipboard) {
+                            navigator.clipboard.writeText(msg).then(function () {
+                                const orig = copyBtn.innerHTML;
+                                copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> ' + (currentLang === 'ru' ? 'Скопировано!' : 'Copied!');
+                                setTimeout(function () { copyBtn.innerHTML = orig; }, 2000);
+                            });
                         }
                     });
-                });
+                }
 
                 // Reactive form inputs
                 ['destSelect', 'typeSelect', 'paxInput', 'dateInput', 'timeInput', 'pickupInput'].forEach(function (id) {
