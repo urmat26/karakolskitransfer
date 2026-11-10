@@ -23,7 +23,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9D%84%EF%B8%8F%3C/text%3E%3C/svg%3E">
 
@@ -738,6 +738,11 @@
             table.rates { min-width: 540px; }
             .roofbox-banner { padding: 26px 20px; }
         }
+        .reveal {
+            opacity: 0; transform: translateY(24px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.is-visible { opacity: 1; transform: none; }
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             * { transition: none !important; animation: none !important; }
@@ -800,7 +805,7 @@
                             <span data-lang="hero_stat3_l">вместимость автобокса</span>
                         </div>
                         <div class="stat-card">
-                            <b data-lang="hero_stat4_v">0 сом</b>
+                            <b data-lang="hero_stat4_v">0 KGS</b>
                             <span data-lang="hero_stat4_l">предоплата не требуется</span>
                         </div>
                     </div>
@@ -1205,7 +1210,6 @@
         "nav_how": "Как это работает",
         "nav_contacts": "Контакты",
         "nav_book": "Заказать трансфер",
-        "hero_badge": "Зимний трансфер · Каракол",
         "hero_title": "Добирайтесь до склонов без лишних хлопот",
         "hero_subtitle": "Трансфер с водителем на горнолыжные курорты Каракола. Поездки в одну сторону, туда и обратно или в формате сборного трансфера с подачей авто прямо к вашему отелю.",
         "hero_cta_book": "Заказать трансфер",
@@ -1297,11 +1301,10 @@
         "contact_whatsapp_btn": "Написать в WhatsApp",
         "contact_telegram_btn": "Написать в Telegram",
         "footer_rights": "© 2026 Karakol Ski Transfer. Все права защищены.",
-        "hero_telemetry": "Каракол: -4°C · Снег 155 см · Дорога открыта 4WD",
         "hero_badge_live": "Зимний сезон 2026/2027 · Трансферы ежедневно",
         "hero_stat3_v": "850 л",
         "hero_stat3_l": "вместимость автобокса",
-        "hero_stat4_v": "0 сом",
+        "hero_stat4_v": "0 KGS",
         "hero_stat4_l": "предоплата не требуется",
         "why_title": "Почему выбирают наш трансфер",
         "why_subtitle": "Безопасность на горном серпантине, комфорт внедорожника и честные фиксированные цены",
@@ -1319,19 +1322,12 @@
         "car_feat2": "Автобокс 850 л",
         "car_feat3": "2-зонный климат",
         "car_feat4": "USB / Type-C зарядки",
-        "car_btn_view1": "Чёрный LC 100",
-        "car_btn_view2": "Серый LC 100",
         "mob_bar_book": "Заказать в WhatsApp",
         "calc_msg_preview": "Предпросмотр сообщения",
-        "hero_eyebrow": "Экспедиционный трансфер на склоны Тянь-Шаня",
-        "fleet_tag": "Флот внедорожников",
         "route_karakol_stat": "18 км · ~35 мин · 2 300 - 3 040 м",
         "route_alatoo_stat": "32 км · ~50 мин · Фрирайд зона",
         "roofbox_highlight_t": "Экспедиционный автобокс 850 л на каждом авто",
         "roofbox_highlight_d": "Никаких лыж на коленях или в салоне: до 6 комплектов горных лыж, широкие сноуборды и чехлы размещаются на крыше в сухом закрытом боксе. В салоне — максимум пространства и тепла.",
-        "calc_step1": "1. Курорт",
-        "calc_step2": "2. Формат поездки",
-        "calc_step3": "3. Дата и подача",
         "calc_copy_btn": "Скопировать текст заявки",
         "nav_why": "Почему мы",
         "why_recommended": "Рекомендуем",
@@ -1348,7 +1344,6 @@
         "nav_how": "How it works",
         "nav_contacts": "Contacts",
         "nav_book": "Book now",
-        "hero_badge": "Winter transfers · Karakol",
         "hero_title": "Hit the slopes without the hassle",
         "hero_subtitle": "Door-to-door transfers to Karakol ski resorts. Pickup & drop-off, one-way and round-trip options, shared rides available.",
         "hero_cta_book": "Book a transfer",
@@ -1440,7 +1435,6 @@
         "contact_whatsapp_btn": "Message on WhatsApp",
         "contact_telegram_btn": "Message on Telegram",
         "footer_rights": "© 2026 Karakol Ski Transfer. All rights reserved.",
-        "hero_telemetry": "Karakol: -4°C · Snow base 155 cm · Road open for 4WD",
         "hero_badge_live": "Winter Season 2026/2027 · Daily Transfers",
         "hero_stat3_v": "850 L",
         "hero_stat3_l": "roof box capacity",
@@ -1462,19 +1456,12 @@
         "car_feat2": "850 L Roof Box",
         "car_feat3": "Dual-Zone Climate",
         "car_feat4": "USB / Type-C Charging",
-        "car_btn_view1": "Black LC 100",
-        "car_btn_view2": "Grey LC 100",
         "mob_bar_book": "Book via WhatsApp",
         "calc_msg_preview": "Message Preview",
-        "hero_eyebrow": "Expedition Ski Transfers to Tian Shan Slopes",
-        "fleet_tag": "Expedition Fleet",
         "route_karakol_stat": "18 km · ~35 min · 2,300 - 3,040 m",
         "route_alatoo_stat": "32 km · ~50 min · Freeride Zone",
         "roofbox_highlight_t": "Expedition 850 L Roof Box on Every Vehicle",
         "roofbox_highlight_d": "Zero skis inside the cabin: up to 6 sets of skis, wide snowboards and boot bags travel safely in the enclosed aerodynamic roof box. The heated passenger cabin stays warm and spacious.",
-        "calc_step1": "1. Destination",
-        "calc_step2": "2. Transfer Type",
-        "calc_step3": "3. Date & Pickup",
         "calc_copy_btn": "Copy Message Text",
         "nav_why": "Why us",
         "why_recommended": "Recommended",
@@ -1822,6 +1809,23 @@
 
                 const dateInput = document.getElementById('dateInput');
                 if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
+
+                const revealTargets = document.querySelectorAll('.section-head, .loc-card, .car-card, .roofbox-banner, .why-card, .table-wrap, .note, .step, .how-visual, .booking-card, .contact-item, .quick-card');
+                if ('IntersectionObserver' in window) {
+                    const revealObserver = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('is-visible');
+                                revealObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.12 });
+                    revealTargets.forEach(function (el, i) {
+                        el.classList.add('reveal');
+                        el.style.transitionDelay = (i % 4) * 0.08 + 's';
+                        revealObserver.observe(el);
+                    });
+                }
             });
         })();
     </script>
