@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-lang="page_title">Karakol Ski Transfer — трансфер на горнолыжные курорты Каракола</title>
-    <meta name="description" data-lang="meta_description" content="Трансфер с водителем из Каракола на Karakol Ski Resort, Kapriz и Ala-Too. Забор по адресу, до 6 пассажиров, автобокс, фиксированные тарифы.">
+    <meta name="description" data-lang="meta_description" content="Комфортный трансфер с водителем из Каракола на горнолыжные базы Karakol Ski Resort, Kapriz и Ala-Too. Подача авто по вашему адресу, до 6 пассажиров, вместительный автобокс на 850 л и фиксированные цены.">
     <meta name="keywords" content="Karakol Ski Transfer, трансфер Каракол, Karakol Ski Resort, Kapriz, Ala-Too, горнолыжный трансфер, Karakol transfer, ski transfer Kyrgyzstan">
     <link rel="canonical" href="https://karakolskitransfer.com/">
     <link rel="alternate" hreflang="ru" href="https://karakolskitransfer.com/?lang=ru">
@@ -14,7 +14,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://karakolskitransfer.com/">
     <meta property="og:title" data-lang="page_title" content="Karakol Ski Transfer — трансфер на горнолыжные курорты Каракола">
-    <meta property="og:description" data-lang="meta_description" content="Трансфер с водителем из Каракола на Karakol Ski Resort, Kapriz и Ala-Too. Забор по адресу, до 6 пассажиров, автобокс, фиксированные тарифы.">
+    <meta property="og:description" data-lang="meta_description" content="Комфортный трансфер с водителем из Каракола на горнолыжные базы Karakol Ski Resort, Kapriz и Ala-Too. Подача авто по вашему адресу, до 6 пассажиров, вместительный автобокс на 850 л и фиксированные цены.">
     <meta property="og:image" content="https://karakolskitransfer.com/img/hero.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Karakol Ski Transfer">
@@ -48,6 +48,10 @@
             --font-head: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
         }
 
+                :focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 2px;
+        }
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
@@ -82,6 +86,7 @@
             padding: 14px 26px; border-radius: 14px; font-weight: 700; font-size: 0.98rem;
             border: 0; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
             font-family: var(--font-body);
+            white-space: nowrap;
         }
         .btn:hover { transform: translateY(-2px); }
         .btn-primary { background: linear-gradient(135deg, var(--blue), var(--blue-d)); color: #fff; box-shadow: 0 12px 26px rgba(11, 74, 162, 0.28); }
@@ -90,35 +95,89 @@
         .btn-ghost:hover { background: rgba(255, 255, 255, 0.2); }
         .btn-light { background: #fff; color: var(--blue-d); box-shadow: var(--shadow-sm); }
 
-        /* Header */
+        /* Header & Navigation */
         header.site-header {
             position: fixed; inset: 0 0 auto 0; z-index: 50;
-            background: rgba(240, 248, 254, 0.82);
-            backdrop-filter: blur(14px);
+            background: rgba(240, 248, 254, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid transparent;
-            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
         }
-        header.site-header.scrolled { border-color: var(--line); box-shadow: 0 6px 20px rgba(10, 35, 66, 0.06); }
-        .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 18px; }
-        .logo { display: inline-flex; align-items: center; gap: 11px; font-family: var(--font-head); font-weight: 700; font-size: 1.02rem; letter-spacing: -0.01em; }
+        header.site-header.scrolled {
+            border-color: var(--line);
+            background: rgba(240, 248, 254, 0.96);
+            box-shadow: 0 8px 24px rgba(10, 35, 66, 0.08);
+        }
+        .nav {
+            display: flex; align-items: center; justify-content: space-between;
+            height: 74px; gap: 18px; flex-wrap: nowrap;
+        }
+        .logo {
+            display: inline-flex; align-items: center; gap: 12px;
+            font-family: var(--font-head); font-weight: 700; font-size: 1.05rem;
+            letter-spacing: -0.01em; color: var(--ink);
+            transition: opacity 0.2s ease;
+            white-space: nowrap; flex-shrink: 0;
+        }
+        .logo:hover { opacity: 0.92; }
         .logo-mark {
-            width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center;
-            background: linear-gradient(135deg, var(--blue), var(--accent)); color: #fff; font-size: 1rem;
-            box-shadow: 0 8px 18px rgba(31, 111, 214, 0.32);
+            width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+            background: linear-gradient(135deg, var(--blue), var(--accent)); color: #fff; font-size: 1.05rem;
+            box-shadow: 0 8px 18px rgba(31, 111, 214, 0.3);
+            transition: transform 0.3s ease; flex-shrink: 0;
         }
-        .logo span small { display: block; font-family: var(--font-body); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
-        .nav-links { display: flex; align-items: center; gap: 26px; }
-        .nav-links a { font-size: 0.92rem; font-weight: 600; color: var(--ink-2); opacity: 0.85; transition: opacity 0.2s, color 0.2s; }
+        .logo:hover .logo-mark { transform: rotate(15deg) scale(1.05); }
+        .logo span { line-height: 1.15; }
+        .logo span small {
+            display: block; font-family: var(--font-body); font-size: 0.68rem; font-weight: 600;
+            letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+            margin-top: 2px;
+        }
+        .nav-links { display: flex; align-items: center; gap: 22px; flex-shrink: 0; flex-wrap: nowrap; }
+        .nav-links a {
+            position: relative; padding: 6px 0;
+            font-size: 0.92rem; font-weight: 600; color: var(--ink-2);
+            opacity: 0.85; transition: opacity 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+            background: var(--blue); border-radius: 2px;
+            transform: scaleX(0); transform-origin: center;
+            transition: transform 0.25s ease;
+        }
         .nav-links a:hover { opacity: 1; color: var(--blue); }
+        .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+        .nav-links a.active { opacity: 1; color: var(--blue); font-weight: 700; }
+        .nav-mobile-cta { display: none; }
         .nav-actions { display: flex; align-items: center; gap: 10px; }
         .lang-btn, .menu-btn {
-            height: 40px; min-width: 40px; padding: 0 12px; border-radius: 11px; border: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.7); color: var(--ink); font-weight: 700; font-size: 0.82rem;
-            cursor: pointer; font-family: var(--font-body); transition: background 0.2s, border-color 0.2s;
+            height: 40px; min-width: 40px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.85); color: var(--ink); font-weight: 700; font-size: 0.84rem;
+            cursor: pointer; font-family: var(--font-body);
+            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
         }
-        .lang-btn:hover, .menu-btn:hover { background: #fff; border-color: rgba(31, 111, 214, 0.4); }
-        .menu-btn { display: none; }
-        .nav .btn { padding: 10px 18px; font-size: 0.88rem; }
+        .lang-btn i { font-size: 0.88rem; color: var(--blue); }
+        .lang-btn:hover, .menu-btn:hover {
+            background: #fff; border-color: rgba(31, 111, 214, 0.45);
+            box-shadow: 0 4px 12px rgba(10, 35, 66, 0.08);
+            transform: translateY(-1px);
+        }
+        .menu-btn { display: none; width: 42px; padding: 0; font-size: 1.1rem; }
+        .nav .btn { padding: 10px 20px; font-size: 0.9rem; border-radius: 12px; }
+
+        /* Nav Overlay for Mobile */
+        .nav-overlay {
+            position: fixed; inset: 0; z-index: 45;
+            background: rgba(10, 35, 66, 0.45);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+        .nav-overlay.active { opacity: 1; visibility: visible; }
 
         /* Hero */
         .hero {
@@ -246,9 +305,23 @@
         .field.full { grid-column: 1 / -1; }
         .field label { font-size: 0.8rem; font-weight: 700; color: var(--ink-2); }
         .field input, .field select {
-            width: 100%; padding: 12px 14px; border-radius: 11px; border: 1px solid var(--line);
+            width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line);
             background: #f7fbff; font-family: var(--font-body); font-size: 0.92rem; color: var(--ink);
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+        }
+        .field select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2358708a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 14px;
+            padding-right: 38px;
+            cursor: pointer;
+        }
+        .field select:hover, .field input:hover {
+            border-color: rgba(31, 111, 214, 0.35);
         }
         .field input:focus, .field select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(31, 111, 214, 0.14); }
         .estimate { grid-column: 1 / -1; background: linear-gradient(135deg, rgba(31, 111, 214, 0.08), rgba(56, 189, 248, 0.12)); border: 1px dashed rgba(31, 111, 214, 0.35); border-radius: 13px; padding: 13px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
@@ -277,18 +350,48 @@
         .footer-inner p { font-size: 0.82rem; color: var(--muted); }
         .footer-tagline { font-size: 0.85rem; color: var(--muted); }
 
-        @media (max-width: 980px) {
-            .nav-links { display: none; }
-            .nav-links.open {
-                display: flex; position: absolute; top: 74px; left: 0; right: 0;
-                flex-direction: column; align-items: flex-start; gap: 0;
-                background: rgba(240, 248, 254, 0.98); padding: 12px 22px 22px;
-                border-bottom: 1px solid var(--line); box-shadow: 0 20px 30px rgba(10, 35, 66, 0.08);
+        @media (max-width: 1160px) {
+            .logo span small { display: none; }
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 0.88rem; }
+            .nav .btn { padding: 9px 15px; font-size: 0.86rem; }
+        }
+        @media (max-width: 1000px) {
+            .nav-links {
+                position: fixed; top: 74px; left: 0; right: 0; z-index: 48;
+                flex-direction: column; align-items: stretch; gap: 4px;
+                background: rgba(245, 250, 255, 0.98);
+                backdrop-filter: blur(18px);
+                -webkit-backdrop-filter: blur(18px);
+                padding: 16px 20px 24px;
+                border-bottom: 1px solid var(--line);
+                box-shadow: 0 20px 35px rgba(10, 35, 66, 0.12);
+                max-height: calc(100vh - 74px);
+                overflow-y: auto;
+                transform: translateY(-10px);
+                opacity: 0; visibility: hidden;
+                transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s ease;
             }
-            .nav-links.open a { padding: 12px 0; width: 100%; border-bottom: 1px solid var(--line); }
-            .nav-links.open a:last-child { border-bottom: 0; }
+            .nav-links.open {
+                display: flex;
+                transform: translateY(0);
+                opacity: 1; visibility: visible;
+            }
+            .nav-links a {
+                padding: 13px 16px; width: 100%; border-radius: 12px;
+                font-size: 0.98rem; border-bottom: 0;
+                display: flex; align-items: center; justify-content: space-between;
+            }
+            .nav-links a::after { display: none; }
+            .nav-links a:hover, .nav-links a.active {
+                background: rgba(31, 111, 214, 0.08); color: var(--blue);
+            }
+            .nav-mobile-cta {
+                display: flex !important; width: 100%; margin-top: 10px;
+                padding: 14px 20px; font-size: 0.96rem;
+            }
             .menu-btn { display: inline-flex; align-items: center; justify-content: center; }
-            .nav .btn-primary { display: none; }
+            .nav .nav-desktop-cta { display: none; }
             .locations-grid, .cars-grid, .how-wrap, .booking-card, .contacts-grid { grid-template-columns: 1fr; }
             .how-visual { min-height: 300px; }
             .booking-card { padding: 28px; gap: 28px; }
@@ -317,40 +420,41 @@
 <body>
     <header class="site-header" id="siteHeader">
         <div class="container nav">
-            <a href="#hero" class="logo">
+            <a href="#hero" class="logo" aria-label="Karakol Ski Transfer Home">
                 <span class="logo-mark"><i class="fa-solid fa-snowflake"></i></span>
                 <span>Karakol Ski Transfer<small data-lang="footer_tagline">Трансфер на горнолыжные курорты Каракола</small></span>
             </a>
-            <nav class="nav-links" id="navLinks">
-                <a href="#locations" data-lang="nav_locations">Локации</a>
-                <a href="#cars" data-lang="nav_cars">Машины</a>
+            <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+                <a href="#locations" data-lang="nav_locations">Направления</a>
+                <a href="#cars" data-lang="nav_cars">Автомобили</a>
                 <a href="#prices" data-lang="nav_prices">Цены</a>
-                <a href="#how" data-lang="nav_how">Как проходит</a>
+                <a href="#how" data-lang="nav_how">Как это работает</a>
                 <a href="#contacts" data-lang="nav_contacts">Контакты</a>
+                <a href="#booking" class="btn btn-primary nav-mobile-cta" data-lang="nav_book">Заказать трансфер</a>
             </nav>
             <div class="nav-actions">
-                <button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">EN</button>
-                <a href="#booking" class="btn btn-primary" data-lang="nav_book">Забронировать</a>
-                <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+                <button class="lang-btn" id="langBtn" type="button" aria-label="Переключить язык / Switch language" title="RU / EN"><i class="fa-solid fa-globe"></i> <span id="langBtnText">EN</span></button>
+                <a href="#booking" class="btn btn-primary nav-desktop-cta" data-lang="nav_book">Заказать трансфер</a>
+                <button class="menu-btn" id="menuBtn" type="button" aria-label="Меню навигации" aria-expanded="false" aria-controls="navLinks"><i class="fa-solid fa-bars" id="menuIcon"></i></button>
             </div>
         </div>
     </header>
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
     <main>
         <section class="hero" id="hero">
             <div class="container">
                 <div class="hero-inner">
                     <span class="hero-badge"><i class="fa-solid fa-snowflake"></i> <span data-lang="hero_badge">Зимний трансфер · Каракол</span></span>
-                    <h1 data-lang="hero_title">Доберитесь до снега без забот</h1>
-                    <p class="lead" data-lang="hero_subtitle">Трансфер с водителем на горнолыжные курорты Каракола. Забираем по адресу, ждём на склоне до 4 часов и привозим обратно.</p>
+                    <h1 data-lang="hero_title">Добирайтесь до склонов без лишних хлопот</h1>
+                    <p class="lead" data-lang="hero_subtitle">Трансфер с водителем на горнолыжные курорты Каракола. Поездки в одну сторону, туда и обратно или в формате сборного трансфера с подачей авто прямо к вашему отелю.</p>
                     <div class="hero-cta">
-                        <a href="#booking" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> <span data-lang="hero_cta_book">Забронировать трансфер</span></a>
+                        <a href="#booking" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> <span data-lang="hero_cta_book">Заказать трансфер</span></a>
                         <a href="#prices" class="btn btn-ghost"><span data-lang="hero_cta_prices">Смотреть тарифы</span> <i class="fa-solid fa-arrow-down"></i></a>
                     </div>
                     <div class="hero-stats">
                         <div class="stat"><b data-lang="hero_stat1_v">2</b><span data-lang="hero_stat1_l">внедорожника LC 100</span></div>
-                        <div class="stat"><b data-lang="hero_stat2_v">6</b><span data-lang="hero_stat2_l">пассажиров в машине</span></div>
-                        <div class="stat"><b data-lang="hero_stat3_v">4 ч</b><span data-lang="hero_stat3_l">ожидание включено</span></div>
+                        <div class="stat"><b data-lang="hero_stat2_v">6</b><span data-lang="hero_stat2_l">пассажиров в авто</span></div>
                     </div>
                 </div>
             </div>
@@ -359,9 +463,9 @@
         <section id="locations">
             <div class="container">
                 <div class="section-head">
-                    <span class="eyebrow"><i class="fa-solid fa-mountain-sun"></i> <span data-lang="nav_locations">Локации</span></span>
-                    <h2 data-lang="loc_title">Два курорта — два тарифа</h2>
-                    <p data-lang="loc_subtitle">Выберите направление. Цена фиксированная: за машину или за человека.</p>
+                    <span class="eyebrow"><i class="fa-solid fa-mountain-sun"></i> <span data-lang="nav_locations">Направления</span></span>
+                    <h2 data-lang="loc_title">Два направления — два тарифа</h2>
+                    <p data-lang="loc_subtitle">Выберите подходящий курорт. Фиксированная стоимость за весь автомобиль или за одного пассажира.</p>
                 </div>
                 <div class="locations-grid">
                     <article class="loc-card">
@@ -370,27 +474,27 @@
                             <div class="loc-name" data-lang="loc1_name">Karakol Ski Resort и Kapriz</div>
                         </div>
                         <div class="loc-body">
-                            <p data-lang="loc1_desc">Главный горнолыжный курорт Каракола и соседний Kapriz. Удобный подъём к склонам, прокат и кафе на месте.</p>
+                            <p data-lang="loc1_desc">Главная горнолыжная база Каракола и отельный комплекс Kapriz. Удобный доступ к горнолыжным склонам, прокат снаряжения и кафе на территории комплекса.</p>
                             <div class="rate-grid">
                                 <div class="rate">
-                                    <span class="r-label" data-lang="price_private">Private</span>
+                                    <span class="r-label" data-lang="price_private">Индивидуальный трансфер</span>
                                     <span class="r-price">3 000 KGS</span>
-                                    <span class="r-unit"><span data-lang="price_oneway">В одну сторону</span> · <span data-lang="price_per_vehicle">за машину</span></span>
+                                    <span class="r-unit"><span data-lang="price_oneway">В одну сторону</span> · <span data-lang="price_per_vehicle">за автомобиль</span></span>
                                 </div>
                                 <div class="rate">
                                     <span class="r-label" data-lang="price_round">Туда и обратно</span>
                                     <span class="r-price">8 000 KGS</span>
-                                    <span class="r-unit"><span data-lang="price_per_vehicle">за машину</span></span>
+                                    <span class="r-unit"><span data-lang="price_per_vehicle">за автомобиль</span></span>
                                 </div>
                                 <div class="rate">
-                                    <span class="r-label" data-lang="price_shared">Shared</span>
+                                    <span class="r-label" data-lang="price_shared">Сборный трансфер</span>
                                     <span class="r-price">1 500 KGS</span>
                                     <span class="r-unit"><span data-lang="price_per_person">за человека</span></span>
                                 </div>
                             </div>
                             <ul class="loc-feats">
-                                <li><i class="fa-solid fa-check"></i> <span data-lang="loc1_feat1">Забор и развоз по адресу</span></li>
-                                <li><i class="fa-solid fa-check"></i> <span data-lang="loc1_feat2">Ожидание до 4 часов</span></li>
+                                <li><i class="fa-solid fa-check"></i> <span data-lang="loc1_feat1">Подача и возврат по вашему адресу</span></li>
+                                <li><i class="fa-solid fa-check"></i> <span data-lang="loc1_feat2">Ожидание по договорённости</span></li>
                                 <li><i class="fa-solid fa-check"></i> <span data-lang="loc1_feat3">До 6 пассажиров</span></li>
                             </ul>
                             <a href="#booking" class="btn btn-primary" data-dest="karakol"><span data-lang="loc_book">Выбрать это направление</span> <i class="fa-solid fa-arrow-right"></i></a>
@@ -403,27 +507,27 @@
                             <div class="loc-name" data-lang="loc2_name">Ala-Too Resort</div>
                         </div>
                         <div class="loc-body">
-                            <p data-lang="loc2_desc">Живописный курорт в горах Ала-Тоо. Подходит для спокойного катания и семейного отдыха.</p>
+                            <p data-lang="loc2_desc">Живописная горнолыжная база в ущелье Ала-Тоо. Прекрасно подходит для спокойного катания, фрирайда и семейного отдыха.</p>
                             <div class="rate-grid">
                                 <div class="rate">
-                                    <span class="r-label" data-lang="price_private">Private</span>
+                                    <span class="r-label" data-lang="price_private">Индивидуальный трансфер</span>
                                     <span class="r-price">10 000 KGS</span>
-                                    <span class="r-unit"><span data-lang="price_oneway">В одну сторону</span> · <span data-lang="price_per_vehicle">за машину</span></span>
+                                    <span class="r-unit"><span data-lang="price_oneway">В одну сторону</span> · <span data-lang="price_per_vehicle">за автомобиль</span></span>
                                 </div>
                                 <div class="rate">
                                     <span class="r-label" data-lang="price_round">Туда и обратно</span>
                                     <span class="r-price">15 000 KGS</span>
-                                    <span class="r-unit"><span data-lang="price_per_vehicle">за машину</span></span>
+                                    <span class="r-unit"><span data-lang="price_per_vehicle">за автомобиль</span></span>
                                 </div>
                                 <div class="rate">
-                                    <span class="r-label" data-lang="price_shared">Shared</span>
+                                    <span class="r-label" data-lang="price_shared">Сборный трансфер</span>
                                     <span class="r-price">3 000 KGS</span>
                                     <span class="r-unit"><span data-lang="price_per_person">за человека</span> · <span data-lang="price_min3">минимум 3 пассажира</span></span>
                                 </div>
                             </div>
                             <ul class="loc-feats">
-                                <li><i class="fa-solid fa-check"></i> <span data-lang="loc2_feat1">Забор и развоз по адресу</span></li>
-                                <li><i class="fa-solid fa-check"></i> <span data-lang="loc2_feat2">Ожидание до 4 часов</span></li>
+                                <li><i class="fa-solid fa-check"></i> <span data-lang="loc2_feat1">Подача и возврат по вашему адресу</span></li>
+                                <li><i class="fa-solid fa-check"></i> <span data-lang="loc2_feat2">Ожидание по договорённости</span></li>
                                 <li><i class="fa-solid fa-check"></i> <span data-lang="loc2_feat3">До 6 пассажиров</span></li>
                             </ul>
                             <a href="#booking" class="btn btn-primary" data-dest="alatoo"><span data-lang="loc_book">Выбрать это направление</span> <i class="fa-solid fa-arrow-right"></i></a>
@@ -436,14 +540,14 @@
         <section id="cars" class="cars-section">
             <div class="container">
                 <div class="section-head">
-                    <span class="eyebrow"><i class="fa-solid fa-car-side"></i> <span data-lang="nav_cars">Машины</span></span>
-                    <h2 data-lang="cars_title">Два Land Cruiser 100</h2>
-                    <p data-lang="cars_subtitle">Подготовленные внедорожники с автобоксом на крыше — лыжи и сноуборды помещаются без проблем.</p>
+                    <span class="eyebrow"><i class="fa-solid fa-car-side"></i> <span data-lang="nav_cars">Автомобили</span></span>
+                    <h2 data-lang="cars_title">Два автомобиля Land Cruiser 100</h2>
+                    <p data-lang="cars_subtitle">Надёжные полноприводные внедорожники с вместительным автобоксом на крыше — лыжи, сноуборды и багаж помещаются без проблем.</p>
                 </div>
                 <div class="cars-grid">
                     <article class="car-card">
                         <div class="car-media">
-                            <div class="car-box"><img src="img/autobox.png" alt="Roof box"><span data-lang="car_badge_box">Автобокс 420 л</span></div>
+                            <div class="car-box"><img src="img/autobox.png" alt="Автобокс"><span data-lang="car_badge_box">Автобокс 850 л</span></div>
                             <img class="car-photo" src="img/lc100-1.jpg" alt="Toyota Land Cruiser 100, чёрный">
                         </div>
                         <div class="car-body">
@@ -452,9 +556,9 @@
                                 <span class="car-color" data-lang="car1_color">Чёрный</span>
                             </div>
                             <div class="specs">
-                                <div class="spec"><i class="fa-solid fa-users"></i><div><span class="s-label" data-lang="spec_seats">Мест</span><span class="s-val" data-lang="spec_seats_val">до 6</span></div></div>
+                                <div class="spec"><i class="fa-solid fa-users"></i><div><span class="s-label" data-lang="spec_seats">Пассажиров</span><span class="s-val" data-lang="spec_seats_val">до 6</span></div></div>
                                 <div class="spec"><i class="fa-solid fa-mountain"></i><div><span class="s-label" data-lang="spec_drive">Привод</span><span class="s-val" data-lang="spec_drive_val">4WD</span></div></div>
-                                <div class="spec"><i class="fa-solid fa-box"></i><div><span class="s-label" data-lang="spec_box">Автобокс</span><span class="s-val" data-lang="spec_box_val">420 л</span></div></div>
+                                <div class="spec"><i class="fa-solid fa-box"></i><div><span class="s-label" data-lang="spec_box">Автобокс</span><span class="s-val" data-lang="spec_box_val">850 л</span></div></div>
                                 <div class="spec"><i class="fa-solid fa-car"></i><div><span class="s-label" data-lang="spec_year">Кузов</span><span class="s-val" data-lang="spec_year_val">LC 100</span></div></div>
                             </div>
                         </div>
@@ -462,7 +566,7 @@
 
                     <article class="car-card">
                         <div class="car-media">
-                            <div class="car-box"><img src="img/autobox.png" alt="Roof box"><span data-lang="car_badge_box">Автобокс 420 л</span></div>
+                            <div class="car-box"><img src="img/autobox.png" alt="Автобокс"><span data-lang="car_badge_box">Автобокс 850 л</span></div>
                             <img class="car-photo" src="img/lc100-2.jpg" alt="Toyota Land Cruiser 100, серый">
                         </div>
                         <div class="car-body">
@@ -471,9 +575,9 @@
                                 <span class="car-color" data-lang="car2_color">Серый</span>
                             </div>
                             <div class="specs">
-                                <div class="spec"><i class="fa-solid fa-users"></i><div><span class="s-label" data-lang="spec_seats">Мест</span><span class="s-val" data-lang="spec_seats_val">до 6</span></div></div>
+                                <div class="spec"><i class="fa-solid fa-users"></i><div><span class="s-label" data-lang="spec_seats">Пассажиров</span><span class="s-val" data-lang="spec_seats_val">до 6</span></div></div>
                                 <div class="spec"><i class="fa-solid fa-mountain"></i><div><span class="s-label" data-lang="spec_drive">Привод</span><span class="s-val" data-lang="spec_drive_val">4WD</span></div></div>
-                                <div class="spec"><i class="fa-solid fa-box"></i><div><span class="s-label" data-lang="spec_box">Автобокс</span><span class="s-val" data-lang="spec_box_val">420 л</span></div></div>
+                                <div class="spec"><i class="fa-solid fa-box"></i><div><span class="s-label" data-lang="spec_box">Автобокс</span><span class="s-val" data-lang="spec_box_val">850 л</span></div></div>
                                 <div class="spec"><i class="fa-solid fa-car"></i><div><span class="s-label" data-lang="spec_year">Кузов</span><span class="s-val" data-lang="spec_year_val">LC 100</span></div></div>
                             </div>
                         </div>
@@ -487,16 +591,16 @@
                 <div class="section-head">
                     <span class="eyebrow"><i class="fa-solid fa-tags"></i> <span data-lang="nav_prices">Цены</span></span>
                     <h2 data-lang="prices_title">Тарифы</h2>
-                    <p data-lang="prices_subtitle">Фиксированные цены в сомах. Оплата водителю на месте.</p>
+                    <p data-lang="prices_subtitle">Фиксированные цены в сомах (KGS). Оплата водителю на месте наличными или переводом.</p>
                 </div>
                 <div class="table-wrap">
                     <table class="rates">
                         <thead>
                             <tr>
                                 <th data-lang="tbl_dest">Направление</th>
-                                <th data-lang="tbl_private_one">Private, в одну сторону</th>
-                                <th data-lang="tbl_private_round">Private, туда-обратно</th>
-                                <th data-lang="tbl_shared">Shared, за человека</th>
+                                <th data-lang="tbl_private_one">Индивидуальный, в одну сторону</th>
+                                <th data-lang="tbl_private_round">Индивидуальный, туда и обратно</th>
+                                <th data-lang="tbl_shared">Сборный, за человека</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -516,10 +620,10 @@
                     </table>
                 </div>
                 <div class="notes">
-                    <div class="note"><i class="fa-solid fa-clock"></i><p data-lang="note1">Ожидание до 4 часов включено в стоимость. Дольше — по договорённости, возможна доплата.</p></div>
-                    <div class="note"><i class="fa-solid fa-users"></i><p data-lang="note2">Shared-поездка отправляется при минимуме 3 пассажиров на Ala-Too. Если группа не набралась — перенос, возврат или private с доплатой.</p></div>
-                    <div class="note"><i class="fa-solid fa-location-dot"></i><p data-lang="note3">Забираем клиентов по адресам. При сборной поездке — до 3 точек сбора, затем едем в Каракол.</p></div>
-                    <div class="note"><i class="fa-solid fa-id-card"></i><p data-lang="note4">Цена указана за трансфер, а не за аренду авто. Водитель — в стоимости.</p></div>
+                    <div class="note"><i class="fa-solid fa-clock"></i><p data-lang="note1">Ожидание по договорённости.</p></div>
+                    <div class="note"><i class="fa-solid fa-users"></i><p data-lang="note2">*Поездка гарантирована при наборе от 3 пассажиров (для Ala-Too Resort). При меньшем количестве — перенос времени, возврат или индивидуальный трансфер с доплатой.</p></div>
+                    <div class="note"><i class="fa-solid fa-location-dot"></i><p data-lang="note3">Забираем пассажиров по адресам в Караколе. Для сборных рейсов предусмотрено до 3 точек посадки.</p></div>
+                    <div class="note"><i class="fa-solid fa-id-card"></i><p data-lang="note4">Цена указана за трансфер с водителем, а не за аренду автомобиля без водителя.</p></div>
                 </div>
             </div>
         </section>
@@ -527,32 +631,28 @@
         <section id="how">
             <div class="container">
                 <div class="section-head">
-                    <span class="eyebrow"><i class="fa-solid fa-route"></i> <span data-lang="nav_how">Как проходит</span></span>
-                    <h2 data-lang="how_title">Как проходит поездка</h2>
-                    <p data-lang="how_subtitle">От вашего адреса до склона и обратно.</p>
+                    <span class="eyebrow"><i class="fa-solid fa-route"></i> <span data-lang="nav_how">Как это работает</span></span>
+                    <h2 data-lang="how_title">Как это работает</h2>
+                    <p data-lang="how_subtitle">Комфортный трансфер от дверей вашего отеля до трассы и обратно.</p>
                 </div>
                 <div class="how-wrap">
                     <ol class="steps">
                         <li class="step">
                             <span class="step-num">1</span>
-                            <div><h3 data-lang="step1_t">Заявка</h3><p data-lang="step1_d">Пишете в WhatsApp: дата, адрес, курорт, количество пассажиров и тип трансфера.</p></div>
+                            <div><h3 data-lang="step1_t">Заявка</h3><p data-lang="step1_d">Заполните форму на сайте или напишите в WhatsApp: дату, адрес подачи, курорт, количество пассажиров и формат трансфера.</p></div>
                         </li>
                         <li class="step">
                             <span class="step-num">2</span>
-                            <div><h3 data-lang="step2_t">Подтверждение</h3><p data-lang="step2_d">Согласуем время, водителя и итоговую стоимость. Без предоплаты.</p></div>
+                            <div><h3 data-lang="step2_t">Подтверждение</h3><p data-lang="step2_d">Согласуем удобное время подачи, назначим автомобиль и зафиксируем итоговую стоимость. Без предоплаты.</p></div>
                         </li>
                         <li class="step">
                             <span class="step-num">3</span>
-                            <div><h3 data-lang="step3_t">Забор по адресу</h3><p data-lang="step3_d">Водитель приезжает к вам. Для сборной поездки — до 3 точек сбора.</p></div>
-                        </li>
-                        <li class="step">
-                            <span class="step-num">4</span>
-                            <div><h3 data-lang="step4_t">Склон и возвращение</h3><p data-lang="step4_d">Привозим на курорт, ждём до 4 часов и везём обратно по указанному адресу.</p></div>
+                            <div><h3 data-lang="step3_t">Подача автомобиля</h3><p data-lang="step3_d">Водитель приедет точно к назначенному времени по вашему адресу. Для сборных поездок — до 3 адресов посадки.</p></div>
                         </li>
                     </ol>
                     <div class="how-visual">
                         <img src="img/snow-forest.jpg" alt="Зимний лес в снегу">
-                        <div class="how-note"><i class="fa-solid fa-snowflake"></i> <span data-lang="how_note">Лыжи, сноуборды и багаж — в автобоксе на крыше.</span></div>
+                        <div class="how-note"><i class="fa-solid fa-snowflake"></i> <span data-lang="how_note">Лыжи, сноуборды и багаж аккуратно размещаются в закрытом автобоксе на крыше.</span></div>
                     </div>
                 </div>
             </div>
@@ -562,11 +662,11 @@
             <div class="container">
                 <div class="booking-card">
                     <div class="booking-side">
-                        <h2 data-lang="book_title">Забронировать трансфер</h2>
-                        <p data-lang="book_subtitle">Заполните заявку — откроется WhatsApp с готовым сообщением.</p>
+                        <h2 data-lang="book_title">Заказать трансфер</h2>
+                        <p data-lang="book_subtitle">Заполните параметры поездки — откроется чат WhatsApp с уже сформированным сообщением.</p>
                         <ul class="mini-list">
-                            <li><i class="fa-solid fa-snowflake"></i> <span data-lang="loc1_feat1">Забор и развоз по адресу</span></li>
-                            <li><i class="fa-solid fa-clock"></i> <span data-lang="loc1_feat2">Ожидание до 4 часов</span></li>
+                            <li><i class="fa-solid fa-snowflake"></i> <span data-lang="loc1_feat1">Подача и возврат по вашему адресу</span></li>
+                            <li><i class="fa-solid fa-clock"></i> <span data-lang="loc1_feat2">Ожидание по договорённости</span></li>
                             <li><i class="fa-solid fa-users"></i> <span data-lang="loc1_feat3">До 6 пассажиров</span></li>
                         </ul>
                     </div>
@@ -576,15 +676,19 @@
                             <input type="date" id="dateInput" required>
                         </div>
                         <div class="field">
-                            <label for="paxInput" data-lang="form_passengers">Пассажиров</label>
+                            <label for="timeInput" data-lang="form_time">Время подачи</label>
+                            <input type="time" id="timeInput" required>
+                        </div>
+                        <div class="field">
+                            <label for="paxInput" data-lang="form_passengers">Количество пассажиров</label>
                             <input type="number" id="paxInput" min="1" max="6" value="2" required>
                         </div>
                         <div class="field full">
-                            <label for="pickupInput" data-lang="form_pickup">Адрес забора</label>
-                            <input type="text" id="pickupInput" data-lang="form_pickup_ph" placeholder="Отель или адрес в Караколе" required>
+                            <label for="pickupInput" data-lang="form_pickup">Адрес подачи автомобиля</label>
+                            <input type="text" id="pickupInput" data-lang="form_pickup_ph" placeholder="Отель или точный адрес в Караколе" required>
                         </div>
                         <div class="field">
-                            <label for="destSelect" data-lang="form_dest">Курорт</label>
+                            <label for="destSelect" data-lang="form_dest">Направление</label>
                             <select id="destSelect" required>
                                 <option value="" data-lang="form_select_ph">Выберите курорт</option>
                                 <option value="karakol" data-lang="dest1">Karakol Ski Resort &amp; Kapriz</option>
@@ -594,17 +698,17 @@
                         <div class="field">
                             <label for="typeSelect" data-lang="form_type">Тип трансфера</label>
                             <select id="typeSelect" required>
-                                <option value="private_one" data-lang="type_private_one">Private — в одну сторону</option>
-                                <option value="private_round" data-lang="type_private_round">Private — туда и обратно</option>
-                                <option value="shared" data-lang="type_shared">Shared — за человека</option>
+                                <option value="private_one" data-lang="type_private_one">Индивидуальный — в одну сторону</option>
+                                <option value="private_round" data-lang="type_private_round">Индивидуальный — туда и обратно</option>
+                                <option value="shared" data-lang="type_shared">Сборный — за человека</option>
                             </select>
                         </div>
                         <div class="estimate">
-                            <span class="e-label" data-lang="form_estimate">Ориентировочная стоимость</span>
+                            <span class="e-label" data-lang="form_estimate">Предварительная стоимость</span>
                             <span class="e-val" id="estimateVal">—</span>
                         </div>
                         <button type="submit" class="btn btn-primary"><i class="fa-brands fa-whatsapp"></i> <span data-lang="form_submit">Отправить в WhatsApp</span></button>
-                        <p class="form-hint" data-lang="form_hint">Итоговую стоимость и время подтвердим в чате.</p>
+                        <p class="form-hint" data-lang="form_hint">Итоговую стоимость и детали поездки подтвердим в диалоге.</p>
                     </form>
                 </div>
             </div>
@@ -615,7 +719,7 @@
                 <div class="section-head">
                     <span class="eyebrow"><i class="fa-solid fa-comments"></i> <span data-lang="nav_contacts">Контакты</span></span>
                     <h2 data-lang="contact_title">Связаться с нами</h2>
-                    <p data-lang="contact_subtitle">Ответим на вопросы и забронируем трансфер.</p>
+                    <p data-lang="contact_subtitle">Ответим на любые вопросы и оперативно забронируем трансфер.</p>
                 </div>
                 <div class="contacts-grid">
                     <div class="contact-list">
@@ -637,8 +741,8 @@
                         </a>
                     </div>
                     <div class="quick-card">
-                        <h3 data-lang="contact_quick_header">Быстрая бронь</h3>
-                        <p data-lang="contact_quick_desc">Напишите нам в WhatsApp или Telegram — подскажем свободное время и подтвердим заказ.</p>
+                        <h3 data-lang="contact_quick_header">Быстрая связь</h3>
+                        <p data-lang="contact_quick_desc">Напишите нам в WhatsApp или Telegram — подскажем свободные автомобили и подтвердим вашу поездку.</p>
                         <a href="https://wa.me/996558130031" target="_blank" rel="noopener" class="btn btn-light"><i class="fa-brands fa-whatsapp"></i> <span data-lang="contact_whatsapp_btn">Написать в WhatsApp</span></a>
                         <a href="https://t.me/+996558130031" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fa-brands fa-telegram"></i> <span data-lang="contact_telegram_btn">Написать в Telegram</span></a>
                     </div>
@@ -663,142 +767,137 @@
         const translations = {
     "ru": {
         "page_title": "Karakol Ski Transfer — трансфер на горнолыжные курорты Каракола",
-        "meta_description": "Трансфер с водителем из Каракола на Karakol Ski Resort, Kapriz и Ala-Too. Забор по адресу, до 6 пассажиров, автобокс, фиксированные тарифы.",
+        "meta_description": "Комфортный трансфер с водителем из Каракола на горнолыжные базы Karakol Ski Resort, Kapriz и Ala-Too. Подача авто по вашему адресу, до 6 пассажиров, вместительный автобокс на 850 л и фиксированные цены.",
         "footer_tagline": "Трансфер на горнолыжные курорты Каракола",
-        "nav_locations": "Локации",
-        "nav_cars": "Машины",
+        "nav_locations": "Направления",
+        "nav_cars": "Автомобили",
         "nav_prices": "Цены",
-        "nav_how": "Как проходит",
+        "nav_how": "Как это работает",
         "nav_contacts": "Контакты",
-        "nav_book": "Забронировать",
+        "nav_book": "Заказать трансфер",
         "hero_badge": "Зимний трансфер · Каракол",
-        "hero_title": "Доберитесь до снега без забот",
-        "hero_subtitle": "Трансфер с водителем на горнолыжные курорты Каракола. Забираем по адресу, ждём на склоне до 4 часов и привозим обратно.",
-        "hero_cta_book": "Забронировать трансфер",
+        "hero_title": "Добирайтесь до склонов без лишних хлопот",
+        "hero_subtitle": "Трансфер с водителем на горнолыжные курорты Каракола. Поездки в одну сторону, туда и обратно или в формате сборного трансфера с подачей авто прямо к вашему отелю.",
+        "hero_cta_book": "Заказать трансфер",
         "hero_cta_prices": "Смотреть тарифы",
         "hero_stat1_v": "2",
         "hero_stat1_l": "внедорожника LC 100",
         "hero_stat2_v": "6",
-        "hero_stat2_l": "пассажиров в машине",
-        "hero_stat3_v": "4 ч",
-        "hero_stat3_l": "ожидание включено",
-        "loc_title": "Два курорта — два тарифа",
-        "loc_subtitle": "Выберите направление. Цена фиксированная: за машину или за человека.",
-        "loc1_name": "Karakol Ski Resort и Kapriz",
-        "loc1_desc": "Главный горнолыжный курорт Каракола и соседний Kapriz. Удобный подъём к склонам, прокат и кафе на месте.",
-        "loc1_feat1": "Забор и развоз по адресу",
-        "loc1_feat2": "Ожидание до 4 часов",
+        "hero_stat2_l": "пассажиров в авто",
+        "loc_title": "Два направления — два тарифа",
+        "loc_subtitle": "Выберите подходящий курорт. Фиксированная стоимость за весь автомобиль или за одного пассажира.",
+        "loc1_name": "Karakol Ski Resort & Kapriz",
+        "loc1_desc": "Главная горнолыжная база Каракола и отельный комплекс Kapriz. Удобный доступ к горнолыжным склонам, прокат снаряжения и кафе на территории комплекса.",
+        "loc1_feat1": "Подача и возврат по вашему адресу",
+        "loc1_feat2": "Ожидание по договорённости",
         "loc1_feat3": "До 6 пассажиров",
         "loc2_name": "Ala-Too Resort",
-        "loc2_desc": "Живописный курорт в горах Ала-Тоо. Подходит для спокойного катания и семейного отдыха.",
-        "loc2_feat1": "Забор и развоз по адресу",
-        "loc2_feat2": "Ожидание до 4 часов",
+        "loc2_desc": "Живописная горнолыжная база в ущелье Ала-Тоо. Прекрасно подходит для спокойного катания, фрирайда и семейного отдыха.",
+        "loc2_feat1": "Подача и возврат по вашему адресу",
+        "loc2_feat2": "Ожидание по договорённости",
         "loc2_feat3": "До 6 пассажиров",
-        "price_private": "Private",
-        "price_shared": "Shared",
+        "price_private": "Индивидуальный трансфер",
+        "price_shared": "Сборный трансфер",
         "price_oneway": "В одну сторону",
         "price_round": "Туда и обратно",
-        "price_per_vehicle": "за машину",
+        "price_per_vehicle": "за автомобиль",
         "price_per_person": "за человека",
         "price_min3": "минимум 3 пассажира",
         "loc_book": "Выбрать это направление",
-        "cars_title": "Два Land Cruiser 100",
-        "cars_subtitle": "Подготовленные внедорожники с автобоксом на крыше — лыжи и сноуборды помещаются без проблем.",
+        "cars_title": "Два автомобиля Land Cruiser 100",
+        "cars_subtitle": "Надёжные полноприводные внедорожники с вместительным автобоксом на крыше — лыжи, сноуборды и багаж помещаются без проблем.",
         "car1_name": "Toyota Land Cruiser 100",
         "car1_color": "Чёрный",
         "car2_name": "Toyota Land Cruiser 100",
         "car2_color": "Серый",
-        "car_badge_box": "Автобокс 420 л",
-        "spec_seats": "Мест",
+        "car_badge_box": "Автобокс 850 л",
+        "spec_seats": "Пассажиров",
         "spec_seats_val": "до 6",
         "spec_drive": "Привод",
         "spec_drive_val": "4WD",
         "spec_box": "Автобокс",
-        "spec_box_val": "420 л",
+        "spec_box_val": "850 л",
         "spec_year": "Кузов",
         "spec_year_val": "LC 100",
         "prices_title": "Тарифы",
-        "prices_subtitle": "Фиксированные цены в сомах. Оплата водителю на месте.",
+        "prices_subtitle": "Фиксированные цены в сомах (KGS). Оплата водителю на месте наличными или переводом.",
         "tbl_dest": "Направление",
-        "tbl_private_one": "Private, в одну сторону",
-        "tbl_private_round": "Private, туда-обратно",
-        "tbl_shared": "Shared, за человека",
+        "tbl_private_one": "Индивидуальный, в одну сторону",
+        "tbl_private_round": "Индивидуальный, туда и обратно",
+        "tbl_shared": "Сборный, за человека",
         "dest1": "Karakol Ski Resort & Kapriz",
         "dest2": "Ala-Too Resort",
-        "note1": "Ожидание до 4 часов включено в стоимость. Дольше — по договорённости, возможна доплата.",
-        "note2": "Shared-поездка отправляется при минимуме 3 пассажиров на Ala-Too. Если группа не набралась — перенос, возврат или private с доплатой.",
-        "note3": "Забираем клиентов по адресам. При сборной поездке — до 3 точек сбора, затем едем в Каракол.",
-        "note4": "Цена указана за трансфер, а не за аренду авто. Водитель — в стоимости.",
-        "how_title": "Как проходит поездка",
-        "how_subtitle": "От вашего адреса до склона и обратно.",
+        "note1": "Ожидание по договорённости.",
+        "note2": "*Поездка гарантирована при наборе от 3 пассажиров (для Ala-Too Resort). При меньшем количестве — перенос времени, возврат или индивидуальный трансфер с доплатой.",
+        "note3": "Забираем пассажиров по адресам в Караколе. Для сборных рейсов предусмотрено до 3 точек посадки.",
+        "note4": "Цена указана за трансфер с водителем, а не за аренду автомобиля без водителя.",
+        "how_title": "Как это работает",
+        "how_subtitle": "Комфортный трансфер от дверей вашего отеля до трассы и обратно.",
         "step1_t": "Заявка",
-        "step1_d": "Пишете в WhatsApp: дата, адрес, курорт, количество пассажиров и тип трансфера.",
+        "step1_d": "Заполните форму на сайте или напишите в WhatsApp: дату, адрес подачи, курорт, количество пассажиров и формат трансфера.",
         "step2_t": "Подтверждение",
-        "step2_d": "Согласуем время, водителя и итоговую стоимость. Без предоплаты.",
-        "step3_t": "Забор по адресу",
-        "step3_d": "Водитель приезжает к вам. Для сборной поездки — до 3 точек сбора.",
-        "step4_t": "Склон и возвращение",
-        "step4_d": "Привозим на курорт, ждём до 4 часов и везём обратно по указанному адресу.",
-        "how_note": "Лыжи, сноуборды и багаж — в автобоксе на крыше.",
-        "book_title": "Забронировать трансфер",
-        "book_subtitle": "Заполните заявку — откроется WhatsApp с готовым сообщением.",
+        "step2_d": "Согласуем удобное время подачи, назначим автомобиль и зафиксируем итоговую стоимость. Без предоплаты.",
+        "step3_t": "Подача автомобиля",
+        "step3_d": "Водитель приедет точно к назначенному времени по вашему адресу. Для сборных поездок — до 3 адресов посадки.",
+        "how_note": "Лыжи, сноуборды и багаж аккуратно размещаются в закрытом автобоксе на крыше.",
+        "book_title": "Заказать трансфер",
+        "book_subtitle": "Заполните параметры поездки — откроется чат WhatsApp с уже сформированным сообщением.",
         "form_date": "Дата поездки",
-        "form_pickup": "Адрес забора",
-        "form_pickup_ph": "Отель или адрес в Караколе",
-        "form_dest": "Курорт",
+        "form_time": "Время подачи",
+        "form_pickup": "Адрес подачи автомобиля",
+        "form_pickup_ph": "Отель или точный адрес в Караколе",
+        "form_dest": "Направление",
         "form_select_ph": "Выберите курорт",
-        "form_passengers": "Пассажиров",
+        "form_passengers": "Количество пассажиров",
         "form_type": "Тип трансфера",
-        "type_private_one": "Private — в одну сторону",
-        "type_private_round": "Private — туда и обратно",
-        "type_shared": "Shared — за человека",
-        "form_estimate": "Ориентировочная стоимость",
+        "type_private_one": "Индивидуальный — в одну сторону",
+        "type_private_round": "Индивидуальный — туда и обратно",
+        "type_shared": "Сборный — за человека",
+        "form_estimate": "Предварительная стоимость",
         "form_submit": "Отправить в WhatsApp",
-        "form_hint": "Итоговую стоимость и время подтвердим в чате.",
+        "form_hint": "Итоговую стоимость и детали поездки подтвердим в диалоге.",
         "contact_title": "Связаться с нами",
-        "contact_subtitle": "Ответим на вопросы и забронируем трансфер.",
+        "contact_subtitle": "Ответим на любые вопросы и оперативно забронируем трансфер.",
         "contact_phone_label": "Телефон",
         "contact_whatsapp_label": "WhatsApp",
         "contact_telegram_label": "Telegram",
         "contact_instagram_label": "Instagram",
-        "contact_quick_header": "Быстрая бронь",
-        "contact_quick_desc": "Напишите нам в WhatsApp или Telegram — подскажем свободное время и подтвердим заказ.",
+        "contact_quick_header": "Быстрая связь",
+        "contact_quick_desc": "Напишите нам в WhatsApp или Telegram — подскажем свободные автомобили и подтвердим вашу поездку.",
         "contact_whatsapp_btn": "Написать в WhatsApp",
         "contact_telegram_btn": "Написать в Telegram",
         "footer_rights": "© 2026 Karakol Ski Transfer. Все права защищены."
     },
     "en": {
-        "page_title": "Karakol Ski Transfer — transfers to Karakol ski resorts",
-        "meta_description": "Private and shared transfers with a driver from Karakol to Karakol Ski Resort, Kapriz and Ala-Too. Door-to-door pickup, up to 6 passengers, roof box, fixed rates.",
-        "footer_tagline": "Transfers to Karakol ski resorts",
-        "nav_locations": "Locations",
-        "nav_cars": "Cars",
+        "page_title": "Karakol Ski Transfer — ski resort transfers in Karakol",
+        "meta_description": "Private and shared transfers from Karakol to Karakol Ski Resort, Kapriz and Ala-Too. Door-to-door pickup, up to 6 passengers, 850 L roof box, fixed rates.",
+        "footer_tagline": "Ski resort transfers in Karakol",
+        "nav_locations": "Destinations",
+        "nav_cars": "Vehicles",
         "nav_prices": "Prices",
         "nav_how": "How it works",
         "nav_contacts": "Contacts",
         "nav_book": "Book now",
-        "hero_badge": "Winter transfer · Karakol",
-        "hero_title": "Reach the snow without the hassle",
-        "hero_subtitle": "Transfers with a driver to Karakol ski resorts. We pick you up at your address, wait up to 4 hours on the slope and bring you back.",
+        "hero_badge": "Winter transfers · Karakol",
+        "hero_title": "Hit the slopes without the hassle",
+        "hero_subtitle": "Door-to-door transfers to Karakol ski resorts. Pickup & drop-off, one-way and round-trip options, shared rides available.",
         "hero_cta_book": "Book a transfer",
         "hero_cta_prices": "View rates",
         "hero_stat1_v": "2",
-        "hero_stat1_l": "Land Cruiser 100",
+        "hero_stat1_l": "Land Cruiser 100s",
         "hero_stat2_v": "6",
-        "hero_stat2_l": "passengers per car",
-        "hero_stat3_v": "4 h",
-        "hero_stat3_l": "waiting included",
+        "hero_stat2_l": "passengers per vehicle",
         "loc_title": "Two resorts — two rates",
-        "loc_subtitle": "Choose your destination. The price is fixed: per vehicle or per person.",
+        "loc_subtitle": "Pick your destination. Fixed pricing per vehicle or per person.",
         "loc1_name": "Karakol Ski Resort & Kapriz",
-        "loc1_desc": "Karakol's main ski resort and the neighbouring Kapriz. Easy access to the slopes, rentals and cafes on site.",
-        "loc1_feat1": "Door-to-door pickup and drop-off",
-        "loc1_feat2": "Up to 4 hours of waiting",
+        "loc1_desc": "Karakol's main ski resort and the neighbouring Kapriz. Easy slope access, gear rentals and cafés on site.",
+        "loc1_feat1": "Door-to-door pickup & drop-off",
+        "loc1_feat2": "Waiting time by arrangement",
         "loc1_feat3": "Up to 6 passengers",
         "loc2_name": "Ala-Too Resort",
-        "loc2_desc": "A scenic resort in the Ala-Too mountains, great for relaxed skiing and family trips.",
-        "loc2_feat1": "Door-to-door pickup and drop-off",
-        "loc2_feat2": "Up to 4 hours of waiting",
+        "loc2_desc": "A scenic resort in the Ala-Too mountains — perfect for relaxed skiing and family trips.",
+        "loc2_feat1": "Door-to-door pickup & drop-off",
+        "loc2_feat2": "Waiting time by arrangement",
         "loc2_feat3": "Up to 6 passengers",
         "price_private": "Private",
         "price_shared": "Shared",
@@ -806,49 +905,48 @@
         "price_round": "Round trip",
         "price_per_vehicle": "per vehicle",
         "price_per_person": "per person",
-        "price_min3": "minimum 3 passengers",
-        "loc_book": "Choose this destination",
-        "cars_title": "Two Land Cruiser 100",
-        "cars_subtitle": "Prepared 4x4 vehicles with a roof box — skis and snowboards fit with no trouble.",
+        "price_min3": "min. 3 passengers",
+        "loc_book": "Select this destination",
+        "cars_title": "Two Land Cruiser 100s",
+        "cars_subtitle": "Winter-ready 4×4 SUVs with a roof box — skis and snowboards fit easily.",
         "car1_name": "Toyota Land Cruiser 100",
         "car1_color": "Black",
         "car2_name": "Toyota Land Cruiser 100",
         "car2_color": "Grey",
-        "car_badge_box": "Roof box 420 L",
+        "car_badge_box": "Roof box 850 L",
         "spec_seats": "Seats",
         "spec_seats_val": "up to 6",
         "spec_drive": "Drivetrain",
         "spec_drive_val": "4WD",
         "spec_box": "Roof box",
-        "spec_box_val": "420 L",
-        "spec_year": "Model",
+        "spec_box_val": "850 L",
+        "spec_year": "Body",
         "spec_year_val": "LC 100",
         "prices_title": "Rates",
-        "prices_subtitle": "Fixed prices in KGS. Pay the driver on site.",
+        "prices_subtitle": "Fixed prices in KGS. Pay the driver on the spot.",
         "tbl_dest": "Destination",
         "tbl_private_one": "Private, one way",
         "tbl_private_round": "Private, round trip",
         "tbl_shared": "Shared, per person",
         "dest1": "Karakol Ski Resort & Kapriz",
         "dest2": "Ala-Too Resort",
-        "note1": "Up to 4 hours of waiting are included. Longer waiting is by arrangement and may cost extra.",
-        "note2": "Shared trips to Ala-Too depart with at least 3 passengers. If the group doesn't fill up — reschedule, refund or a private transfer with a surcharge.",
-        "note3": "We pick clients up at their addresses. For shared trips — up to 3 pickup points, then we drive to Karakol.",
-        "note4": "The price is for a transfer, not car rental. The driver is included.",
-        "how_title": "How the trip works",
-        "how_subtitle": "From your address to the slope and back.",
+        "note1": "Waiting time by arrangement.",
+        "note2": "Shared trips depart only when at least 3 passengers have booked. If the group doesn't fill — reschedule, full refund, or upgrade to a private transfer.",
+        "note3": "We pick you up at your address. Shared trips make up to 3 stops before heading to the resort.",
+        "note4": "The price covers the transfer with a driver — this is not a car rental.",
+        "how_title": "How it works",
+        "how_subtitle": "From your door to the slopes and back.",
         "step1_t": "Request",
-        "step1_d": "Message us on WhatsApp: date, address, resort, number of passengers and transfer type.",
+        "step1_d": "Send us a WhatsApp message with your date, pickup address, resort, number of passengers and transfer type.",
         "step2_t": "Confirmation",
-        "step2_d": "We agree on the time, driver and final price. No prepayment.",
-        "step3_t": "Pickup at your address",
-        "step3_d": "The driver comes to you. For shared trips — up to 3 pickup points.",
-        "step4_t": "Slope and return",
-        "step4_d": "We take you to the resort, wait up to 4 hours and drive you back to your address.",
-        "how_note": "Skis, snowboards and luggage go in the roof box.",
+        "step2_d": "We confirm the time, assign a driver and lock in the price. No prepayment required.",
+        "step3_t": "Door-to-door pickup",
+        "step3_d": "Your driver arrives at your address. Shared rides make up to 3 pickup stops.",
+        "how_note": "Skis, snowboards and luggage ride safely in the roof box.",
         "book_title": "Book a transfer",
-        "book_subtitle": "Fill in the request — WhatsApp will open with a ready message.",
+        "book_subtitle": "Fill out the form — it opens WhatsApp with a ready-to-send message.",
         "form_date": "Travel date",
+        "form_time": "Pickup time",
         "form_pickup": "Pickup address",
         "form_pickup_ph": "Hotel or address in Karakol",
         "form_dest": "Resort",
@@ -860,15 +958,15 @@
         "type_shared": "Shared — per person",
         "form_estimate": "Estimated price",
         "form_submit": "Send via WhatsApp",
-        "form_hint": "We'll confirm the final price and time in chat.",
-        "contact_title": "Contact us",
-        "contact_subtitle": "We'll answer your questions and book your transfer.",
+        "form_hint": "We'll confirm the final price and time in the chat.",
+        "contact_title": "Get in touch",
+        "contact_subtitle": "Have questions? We'll help you and book your transfer.",
         "contact_phone_label": "Phone",
         "contact_whatsapp_label": "WhatsApp",
         "contact_telegram_label": "Telegram",
         "contact_instagram_label": "Instagram",
         "contact_quick_header": "Quick booking",
-        "contact_quick_desc": "Message us on WhatsApp or Telegram — we'll share available times and confirm your booking.",
+        "contact_quick_desc": "Drop us a message on WhatsApp or Telegram — we'll check availability and confirm your ride.",
         "contact_whatsapp_btn": "Message on WhatsApp",
         "contact_telegram_btn": "Message on Telegram",
         "footer_rights": "© 2026 Karakol Ski Transfer. All rights reserved."
@@ -905,8 +1003,13 @@
                     }
                 });
 
-                const langBtn = document.getElementById('langBtn');
-                if (langBtn) langBtn.textContent = currentLang === 'ru' ? 'EN' : 'RU';
+                const langBtnText = document.getElementById('langBtnText');
+                if (langBtnText) {
+                    langBtnText.textContent = currentLang === 'ru' ? 'EN' : 'RU';
+                } else {
+                    const langBtn = document.getElementById('langBtn');
+                    if (langBtn) langBtn.textContent = currentLang === 'ru' ? 'EN' : 'RU';
+                }
 
                 try { localStorage.setItem('kst-lang', currentLang); } catch (e) {}
                 updateEstimate();
@@ -952,6 +1055,7 @@
             function buildMessage() {
                 const dict = translations[currentLang] || { ru: {}, en: {} };
                 const d = document.getElementById('dateInput').value;
+                const t = document.getElementById('timeInput').value;
                 const pickup = document.getElementById('pickupInput').value.trim();
                 const destSel = document.getElementById('destSelect');
                 const typeSel = document.getElementById('typeSelect');
@@ -963,7 +1067,7 @@
                 return [
                     dict.page_title || 'Karakol Ski Transfer',
                     '',
-                    (dict.form_date || 'Date') + ': ' + d,
+                    (dict.form_date || 'Date') + ': ' + d + ' ' + t,
                     (dict.form_pickup || 'Pickup') + ': ' + pickup,
                     (dict.form_dest || 'Resort') + ': ' + destText,
                     (dict.form_passengers || 'Passengers') + ': ' + pax,
@@ -985,6 +1089,7 @@
                 applyLang(lang);
 
                 const langBtn = document.getElementById('langBtn');
+                const langBtnText = document.getElementById('langBtnText');
                 if (langBtn) {
                     langBtn.addEventListener('click', function () {
                         applyLang(currentLang === 'ru' ? 'en' : 'ru');
@@ -992,19 +1097,81 @@
                 }
 
                 const menuBtn = document.getElementById('menuBtn');
+                const menuIcon = document.getElementById('menuIcon');
                 const navLinks = document.getElementById('navLinks');
+                const navOverlay = document.getElementById('navOverlay');
+
+                function toggleMenu(open) {
+                    const isOpen = open !== undefined ? open : !navLinks.classList.contains('open');
+                    if (isOpen) {
+                        navLinks.classList.add('open');
+                        if (navOverlay) navOverlay.classList.add('active');
+                        if (menuIcon) {
+                            menuIcon.classList.remove('fa-bars');
+                            menuIcon.classList.add('fa-xmark');
+                        }
+                        if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        navLinks.classList.remove('open');
+                        if (navOverlay) navOverlay.classList.remove('active');
+                        if (menuIcon) {
+                            menuIcon.classList.remove('fa-xmark');
+                            menuIcon.classList.add('fa-bars');
+                        }
+                        if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+                        document.body.style.overflow = '';
+                    }
+                }
+
                 if (menuBtn && navLinks) {
                     menuBtn.addEventListener('click', function () {
-                        const open = navLinks.classList.toggle('open');
-                        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                        toggleMenu();
                     });
+                    if (navOverlay) {
+                        navOverlay.addEventListener('click', function () {
+                            toggleMenu(false);
+                        });
+                    }
                     navLinks.querySelectorAll('a').forEach(function (a) {
                         a.addEventListener('click', function () {
-                            navLinks.classList.remove('open');
-                            menuBtn.setAttribute('aria-expanded', 'false');
+                            toggleMenu(false);
                         });
                     });
+                    document.addEventListener('keydown', function (e) {
+                        if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+                            toggleMenu(false);
+                        }
+                    });
                 }
+
+                // Scrollspy: highlight active nav link on scroll
+                const sections = ['locations', 'cars', 'prices', 'how', 'contacts'].map(function (id) {
+                    return document.getElementById(id);
+                }).filter(Boolean);
+                const navItems = document.querySelectorAll('.nav-links a:not(.nav-mobile-cta)');
+
+                function updateActiveNav() {
+                    const scrollY = window.scrollY + 120;
+                    let currentId = '';
+                    sections.forEach(function (sec) {
+                        const top = sec.offsetTop;
+                        const height = sec.offsetHeight;
+                        if (scrollY >= top && scrollY < top + height) {
+                            currentId = sec.id;
+                        }
+                    });
+                    navItems.forEach(function (link) {
+                        const href = link.getAttribute('href');
+                        if (href === '#' + currentId) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    });
+                }
+                window.addEventListener('scroll', updateActiveNav, { passive: true });
+                updateActiveNav();
 
                 const header = document.getElementById('siteHeader');
                 const onScroll = function () {
@@ -1027,6 +1194,9 @@
                         if (sel) {
                             sel.value = dest;
                             updateEstimate();
+                            setTimeout(function () {
+                                sel.focus();
+                            }, 350);
                         }
                     });
                 });
