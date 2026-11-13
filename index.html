@@ -1164,7 +1164,7 @@
                         </a>
                         <a href="https://www.instagram.com/kyrgyz4x4rentals?stkn=eTNldm1xZHB6MXA%3D&utm_source=qr" target="_blank" rel="noopener" class="contact-item">
                             <div class="contact-icon ci-pink"><i class="fa-brands fa-instagram"></i></div>
-                            <div><div class="c-label" data-lang="contact_instagram_label">Instagram</div><div class="c-val">@kyrgyz4x4rentals</div></div>
+                            <div><div class="c-label" data-lang="contact_instagram_label">Instagram</div><div class="c-val">4х4</div></div>
                         </a>
                     </div>
                     <div class="quick-card">
@@ -1288,6 +1288,7 @@
         "type_private_round": "Индивидуальный — туда и обратно",
         "type_shared": "Сборный — за человека",
         "form_estimate": "Предварительная стоимость",
+        "estimate_total": "итого",
         "form_submit": "Отправить в WhatsApp",
         "form_hint": "Итоговую стоимость и детали поездки подтвердим в диалоге.",
         "contact_title": "Связаться с нами",
@@ -1422,6 +1423,7 @@
         "type_private_round": "Private — round trip",
         "type_shared": "Shared — per person",
         "form_estimate": "Estimated price",
+        "estimate_total": "total",
         "form_submit": "Send via WhatsApp",
         "form_hint": "We'll confirm the final price and time in the chat.",
         "contact_title": "Get in touch",
@@ -1533,7 +1535,6 @@
 
                 const p = prices[dest];
                 let total = 0;
-                let suffix = '';
 
                 if (type === 'private_one') {
                     total = p.private_one;
@@ -1541,14 +1542,15 @@
                     total = p.private_round;
                 } else {
                     let people = pax;
-                    if (p.minShared && people < p.minShared) {
-                        people = p.minShared;
-                        suffix = ' · ' + (dict.price_min3 || '');
-                    }
+                    if (p.minShared && people < p.minShared) people = p.minShared;
                     total = p.shared * people;
+                    out.textContent = fmt(p.shared) + ' KGS · ' + (dict.price_per_person || 'за человека')
+                        + ' · ' + fmt(total) + ' KGS ' + (dict.estimate_total || 'итого');
+                    if (wpPreview) wpPreview.textContent = buildMessage();
+                    return;
                 }
 
-                out.textContent = fmt(total) + ' KGS' + suffix;
+                out.textContent = fmt(total) + ' KGS';
                 if (wpPreview) wpPreview.textContent = buildMessage();
             }
 
