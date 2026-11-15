@@ -729,14 +729,22 @@
             .stat-card { padding: 14px 16px; }
             .stat-card b { font-size: 1.5rem; }
             .rate-grid { grid-template-columns: 1fr; }
-            .rate { display: flex; align-items: center; justify-content: space-between; text-align: left; padding: 12px 14px; }
+            .rate { display: flex; align-items: center; justify-content: space-between; text-align: left; padding: 12px 14px; flex-wrap: wrap; row-gap: 4px; }
             .rate .r-label { margin-bottom: 0; }
-            .rate .r-unit { margin-top: 0; }
+            .rate .r-unit { margin-top: 0; width: 100%; }
             form.booking-form { grid-template-columns: 1fr; }
             .notes { grid-template-columns: 1fr; }
             .table-wrap { overflow-x: auto; }
             table.rates { min-width: 540px; }
             .roofbox-banner { padding: 26px 20px; }
+            .estimate { flex-wrap: wrap; }
+            .estimate .e-val { font-size: 1.1rem; }
+            .nav { gap: 10px; }
+            .logo { font-size: 0.95rem; gap: 9px; }
+            .logo-mark { width: 36px; height: 36px; font-size: 0.95rem; border-radius: 10px; }
+            .nav-actions { gap: 7px; }
+            .lang-btn, .menu-btn { height: 38px; min-width: 38px; padding: 0 10px; font-size: 0.8rem; }
+            .menu-btn { width: 40px; }
         }
         .reveal {
             opacity: 0; transform: translateY(24px);
@@ -843,7 +851,7 @@
                                 <div class="rate">
                                     <span class="r-label" data-lang="price_shared">Сборный трансфер</span>
                                     <span class="r-price">1 500 KGS</span>
-                                    <span class="r-unit"><span data-lang="price_per_person">за человека</span></span>
+                                    <span class="r-unit"><span data-lang="price_per_person">за человека</span> · <span data-lang="price_min3">минимум 3 пассажира</span></span>
                                 </div>
                             </div>
                             <ul class="loc-feats">
@@ -1026,7 +1034,7 @@
                                 <td data-lang="dest1">Karakol Ski Resort &amp; Kapriz</td>
                                 <td><span class="kgs">3 000 KGS</span></td>
                                 <td><span class="kgs">8 000 KGS</span></td>
-                                <td><span class="kgs">1 500 KGS</span></td>
+                                <td><span class="kgs">1 500 KGS</span><br><small data-lang="price_min3">минимум 3 пассажира</small></td>
                             </tr>
                             <tr>
                                 <td data-lang="dest2">Ala-Too Resort</td>
@@ -1039,7 +1047,7 @@
                 </div>
                 <div class="notes">
                     <div class="note"><i class="fa-solid fa-clock"></i><p data-lang="note1">Ожидание по договорённости.</p></div>
-                    <div class="note"><i class="fa-solid fa-users"></i><p data-lang="note2">*Поездка гарантирована при наборе от 3 пассажиров (для Ala-Too Resort). При меньшем количестве — перенос времени, возврат или индивидуальный трансфер с доплатой.</p></div>
+                    <div class="note"><i class="fa-solid fa-users"></i><p data-lang="note2">*Поездка гарантирована при наборе от 3 пассажиров (для всех направлений). При меньшем количестве — перенос времени, возврат или индивидуальный трансфер с доплатой.</p></div>
                     <div class="note"><i class="fa-solid fa-location-dot"></i><p data-lang="note3">Забираем пассажиров по адресам в Караколе. Для сборных рейсов предусмотрено до 3 точек посадки.</p></div>
                     <div class="note"><i class="fa-solid fa-id-card"></i><p data-lang="note4">Цена указана за трансфер с водителем, а не за аренду автомобиля без водителя.</p></div>
                 </div>
@@ -1262,7 +1270,7 @@
         "dest1": "Karakol Ski Resort & Kapriz",
         "dest2": "Ala-Too Resort",
         "note1": "Ожидание по договорённости.",
-        "note2": "*Поездка гарантирована при наборе от 3 пассажиров (для Ala-Too Resort). При меньшем количестве — перенос времени, возврат или индивидуальный трансфер с доплатой.",
+        "note2": "*Поездка гарантирована при наборе от 3 пассажиров (для всех направлений). При меньшем количестве — перенос времени, возврат или индивидуальный трансфер с доплатой.",
         "note3": "Забираем пассажиров по адресам в Караколе. Для сборных рейсов предусмотрено до 3 точек посадки.",
         "note4": "Цена указана за трансфер с водителем, а не за аренду автомобиля без водителя.",
         "how_title": "Как это работает",
@@ -1397,7 +1405,7 @@
         "dest1": "Karakol Ski Resort & Kapriz",
         "dest2": "Ala-Too Resort",
         "note1": "Waiting time by arrangement.",
-        "note2": "Shared trips depart only when at least 3 passengers have booked. If the group doesn't fill — reschedule, full refund, or upgrade to a private transfer.",
+        "note2": "Shared trips depart only when at least 3 passengers have booked (all destinations). If the group doesn't fill — reschedule, full refund, or upgrade to a private transfer.",
         "note3": "We pick you up at your address. Shared trips make up to 3 stops before heading to the resort.",
         "note4": "The price covers the transfer with a driver — this is not a car rental.",
         "how_title": "How it works",
@@ -1476,7 +1484,7 @@
         (function () {
             const PHONE = '996558130031';
             const prices = {
-                karakol: { private_one: 3000, private_round: 8000, shared: 1500, minShared: 0 },
+                karakol: { private_one: 3000, private_round: 8000, shared: 1500, minShared: 3 },
                 alatoo: { private_one: 10000, private_round: 15000, shared: 3000, minShared: 3 }
             };
             let currentLang = 'ru';
