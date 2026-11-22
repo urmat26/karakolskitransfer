@@ -86,6 +86,7 @@
     "type_private_round": "Private — round trip",
     "type_shared": "Shared — per person",
     "form_estimate": "Estimated price",
+    "estimate_total": "total",
     "form_submit": "Send via WhatsApp",
     "form_hint": "We'll confirm the final price and time in the chat.",
     "contact_title": "Get in touch",
