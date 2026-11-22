@@ -94,8 +94,8 @@ Karakol Ski Transfer — одностраничный статический с�
 
 | Направление | private one-way | private round | shared / чел. | min shared |
 |---|---|---|---|---|
-| karakol | 3 000 | 8 000 | 1 500 | — |
-| alatoo | 10 000 | 15 000 | 3 000 | 3 |
+| karakol | 2 000 | 3 000 | 1 000 | 3 |
+| alatoo | 8 000 | 10 000 | 3 000 | 3 |
 
 При изменении тарифов правьте **и** JSON/HTML, **и** объект `prices` в скрипте.
 

@@ -26,8 +26,8 @@ python build.py
 
 ```js
 const prices = {
-    karakol: { private_one: 3000, private_round: 8000, shared: 1500, minShared: 0 },
-    alatoo:  { private_one: 10000, private_round: 15000, shared: 3000, minShared: 3 }
+    karakol: { private_one: 2000, private_round: 3000, shared: 1000, minShared: 3 },
+    alatoo:  { private_one: 8000, private_round: 10000, shared: 3000, minShared: 3 }
 };
 ```
 
